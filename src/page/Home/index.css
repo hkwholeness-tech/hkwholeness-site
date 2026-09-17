@@ -1,10 +1,11 @@
 .home-page {
     margin: 0;
     display: flex;
-    min-height: 100vh;
+    min-height: 100dvh;
+    background: #f5f2eb;
+    box-sizing: border-box;
     flex-direction: column;
     overflow-x: hidden;
-    background: #f5f2eb;
     padding: 0;
     font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
     color: #2c251e;
