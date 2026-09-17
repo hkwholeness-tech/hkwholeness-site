@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -553,6 +556,9 @@ packages:
 
   caniuse-lite@1.0.30001810:
     resolution: {integrity: sha512-TITQPUkaz+aVk5GL6NhOdwk1aEaNTSDPsGFWrTuhKGtjTF70jL/Oht2W4c6rXUe5fu7Ie19VIahAXHIIiWWNeg==}
+
+  classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -1619,6 +1625,8 @@ snapshots:
       qified: 0.10.1
 
   caniuse-lite@1.0.30001810: {}
+
+  classnames@2.5.1: {}
 
   convert-source-map@2.0.0: {}
 

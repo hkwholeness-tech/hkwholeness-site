@@ -1,15 +1,16 @@
 import React from "react";
 import type {ElementId, FiveElement} from "../type";
 
-export function useFiveElementsWheel(fadeOutMusic: () => void) {
+export function useFiveElementsWheel() {
     const navigatingRef = React.useRef(false);
     const timersRef = React.useRef<number[]>([]);
     const [rotation, setRotation] = React.useState(0);
     const [glowingId, setGlowingId] = React.useState<ElementId | null>(null);
 
     React.useEffect(() => {
+        const timers = timersRef.current;
         return () => {
-            timersRef.current.forEach(id => {
+            timers.forEach(id => {
                 window.clearTimeout(id);
             });
         };
@@ -21,7 +22,6 @@ export function useFiveElementsWheel(fadeOutMusic: () => void) {
         }
         navigatingRef.current = true;
         const rotationNeeded = (360 - element.angle) % 360;
-        fadeOutMusic();
         setGlowingId(null);
         setRotation(rotationNeeded);
         const glowTimer = window.setTimeout(() => {

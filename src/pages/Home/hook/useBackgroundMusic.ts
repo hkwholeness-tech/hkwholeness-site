@@ -91,7 +91,22 @@ export function useBackgroundMusic() {
         }
 
         function unlock() {
-            play();
+            if (!audio) {
+                return;
+            }
+            audio.volume = 1;
+            audio
+                .play()
+                .then(() => {
+                    setIsPlaying(true);
+                    setLyricsActive(false);
+                    window.requestAnimationFrame(() => {
+                        setLyricsActive(true);
+                    });
+                })
+                .catch(() => {
+                    setIsPlaying(false);
+                });
             document.removeEventListener("click", unlock);
             document.removeEventListener("touchstart", unlock);
         }
@@ -100,7 +115,10 @@ export function useBackgroundMusic() {
             .play()
             .then(() => {
                 setIsPlaying(true);
-                restartLyrics();
+                setLyricsActive(false);
+                window.requestAnimationFrame(() => {
+                    setLyricsActive(true);
+                });
             })
             .catch(() => {
                 setIsPlaying(false);
@@ -111,7 +129,10 @@ export function useBackgroundMusic() {
         return () => {
             document.removeEventListener("click", unlock);
             document.removeEventListener("touchstart", unlock);
-            clearFadeTimer();
+            if (fadeTimerRef.current !== null) {
+                window.clearInterval(fadeTimerRef.current);
+                fadeTimerRef.current = null;
+            }
             audio.pause();
         };
     }, []);

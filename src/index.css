@@ -1,6 +1,91 @@
 @import "tailwindcss";
 
-:root {
+@theme {
+    --font-body: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    --font-calligraphy: "LXGW WenKai TC", "DFKai-SB", serif;
+
+    --animate-lyrics-reveal-v: lyrics-reveal-v 30s linear forwards;
+    --animate-lyrics-reveal-h: lyrics-reveal-h 30s linear forwards;
+    --animate-wood-glow: wood-glow 0.8s ease-in-out infinite alternate;
+    --animate-fire-glow: fire-glow 0.8s ease-in-out infinite alternate;
+    --animate-earth-glow: earth-glow 0.8s ease-in-out infinite alternate;
+    --animate-metal-glow: metal-glow 0.8s ease-in-out infinite alternate;
+    --animate-water-glow: water-glow 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes lyrics-reveal-v {
+    0% {
+        opacity: 0;
+    }
+    6% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes lyrics-reveal-h {
+    0% {
+        opacity: 0;
+    }
+    6% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes wood-glow {
+    0% {
+        filter: drop-shadow(0 0 10px #4caf50);
+    }
+    100% {
+        filter: drop-shadow(0 0 25px #81c784);
+    }
+}
+
+@keyframes fire-glow {
+    0% {
+        filter: drop-shadow(0 0 10px #f44336);
+    }
+    100% {
+        filter: drop-shadow(0 0 25px #ff7043);
+    }
+}
+
+@keyframes earth-glow {
+    0% {
+        filter: drop-shadow(0 0 10px #d4a373);
+    }
+    100% {
+        filter: drop-shadow(0 0 25px #e9edc9);
+    }
+}
+
+@keyframes metal-glow {
+    0% {
+        filter: drop-shadow(0 0 10px #ffd700);
+    }
+    100% {
+        filter: drop-shadow(0 0 25px #ffae00);
+    }
+}
+
+@keyframes water-glow {
+    0% {
+        filter: drop-shadow(0 0 10px #2196f3);
+    }
+    100% {
+        filter: drop-shadow(0 0 25px #64b5f6);
+    }
 }
 
 nav {
