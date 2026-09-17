@@ -20,8 +20,8 @@ const INNER_CARD_CLASS = classNames(
     "mx-[calc(-50vw+50%)]",
     "bg-(image:--cyclone-mobile) bg-size-[105%] bg-position-[center_60%] bg-no-repeat",
     "before:pointer-events-none before:absolute before:top-0 before:left-0 before:z-[-1] before:hidden before:h-full before:w-[110%] before:bg-(image:--cyclone-desktop) before:bg-cover before:bg-center before:bg-no-repeat before:opacity-75 before:content-['']",
-    "min-[851px]:mx-0 min-[851px]:w-full min-[851px]:max-w-337.5 min-[851px]:min-h-0 min-[851px]:flex-none min-[851px]:justify-center min-[851px]:rounded-[28px] min-[851px]:px-3.75 min-[851px]:pt-5 min-[851px]:pb-10 min-[851px]:bg-none min-[851px]:before:block",
-    "min-[1401px]:px-10 min-[1401px]:pb-30"
+    "min-[851px]:mx-0 min-[851px]:w-full min-[851px]:max-w-280 min-[851px]:min-h-0 min-[851px]:flex-none min-[851px]:justify-center min-[851px]:rounded-[28px] min-[851px]:px-3.75 min-[851px]:pt-5 min-[851px]:pb-10 min-[851px]:bg-none min-[851px]:before:block",
+    "min-[1401px]:px-8 min-[1401px]:pb-16"
 );
 
 export const HomePage = () => {

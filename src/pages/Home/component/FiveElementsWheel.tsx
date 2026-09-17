@@ -12,7 +12,7 @@ interface Props {
 
 export const FiveElementsWheel = React.memo((props: Props) => {
     return (
-        <div className="relative mx-auto my-0 flex size-80 items-center justify-center min-[601px]:my-1.25 min-[601px]:size-155 min-[993px]:size-220">
+        <div className="relative mx-auto my-0 flex size-80 items-center justify-center min-[601px]:my-1.25 min-[601px]:size-155 min-[993px]:size-180 min-[851px]:translate-x-12 min-[851px]:translate-y-2">
             <CenterPortrait />
             <div className="absolute flex size-full items-center justify-center transition-transform duration-1000 ease-in-out" style={{transform: `rotate(${props.rotation}deg)`}}>
                 {FIVE_ELEMENTS.map(element => (

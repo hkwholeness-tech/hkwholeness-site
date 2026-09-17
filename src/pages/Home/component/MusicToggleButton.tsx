@@ -11,7 +11,7 @@ interface Props {
 const STONE_IMG_CLASS = "absolute inset-0 size-full object-cover transition-opacity duration-400 ease-in-out [image-rendering:-webkit-optimize-contrast]";
 
 const DESKTOP_BTN_CLASS = classNames(
-    "group/stone relative size-27.5 cursor-pointer border-none bg-transparent p-0",
+    "group/stone relative size-22.5 cursor-pointer border-none bg-transparent p-0",
     "outline-none [-webkit-tap-highlight-color:transparent] transition-transform duration-300 ease-in-out hover:scale-[1.06]",
     "focus:outline-none active:outline-none"
 );
