@@ -6,21 +6,21 @@ export function useBackgroundMusic() {
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [lyricsActive, setLyricsActive] = React.useState(false);
 
-    function clearFadeTimer() {
+    const clearFadeTimer = () => {
         if (fadeTimerRef.current !== null) {
             window.clearInterval(fadeTimerRef.current);
             fadeTimerRef.current = null;
         }
-    }
+    };
 
-    function restartLyrics() {
+    const restartLyrics = () => {
         setLyricsActive(false);
         window.requestAnimationFrame(() => {
             setLyricsActive(true);
         });
-    }
+    };
 
-    function play() {
+    const play = () => {
         const audio = audioRef.current;
         if (!audio) {
             return;
@@ -35,18 +35,18 @@ export function useBackgroundMusic() {
             .catch(() => {
                 setIsPlaying(false);
             });
-    }
+    };
 
-    function pause() {
+    const pause = () => {
         const audio = audioRef.current;
         if (!audio) {
             return;
         }
         audio.pause();
         setIsPlaying(false);
-    }
+    };
 
-    function toggle() {
+    const toggle = () => {
         const audio = audioRef.current;
         if (!audio) {
             return;
@@ -56,9 +56,9 @@ export function useBackgroundMusic() {
         } else {
             pause();
         }
-    }
+    };
 
-    function fadeOut(duration = 1000) {
+    const fadeOut = (duration = 1000) => {
         const audio = audioRef.current;
         if (!audio) {
             return;
@@ -82,7 +82,7 @@ export function useBackgroundMusic() {
             setIsPlaying(false);
             clearFadeTimer();
         }, step);
-    }
+    };
 
     React.useEffect(() => {
         const audio = audioRef.current;
@@ -90,7 +90,7 @@ export function useBackgroundMusic() {
             return;
         }
 
-        function unlock() {
+        const unlock = () => {
             if (!audio) {
                 return;
             }
@@ -109,7 +109,7 @@ export function useBackgroundMusic() {
                 });
             document.removeEventListener("click", unlock);
             document.removeEventListener("touchstart", unlock);
-        }
+        };
 
         audio
             .play()

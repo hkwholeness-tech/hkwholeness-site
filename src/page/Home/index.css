@@ -400,23 +400,23 @@
 }
 
 .home-element--wood .home-element__stone.is-glowing {
-    animation: home-wood-glow 0.8s ease-in-out infinite alternate;
+    animation: home-wood-glow 0.8s ease-in-out;
 }
 
 .home-element--fire .home-element__stone.is-glowing {
-    animation: home-fire-glow 0.8s ease-in-out infinite alternate;
+    animation: home-fire-glow 0.8s ease-in-out;
 }
 
 .home-element--earth .home-element__stone.is-glowing {
-    animation: home-earth-glow 0.8s ease-in-out infinite alternate;
+    animation: home-earth-glow 0.8s ease-in-out;
 }
 
 .home-element--metal .home-element__stone.is-glowing {
-    animation: home-metal-glow 0.8s ease-in-out infinite alternate;
+    animation: home-metal-glow 0.8s ease-in-out;
 }
 
 .home-element--water .home-element__stone.is-glowing {
-    animation: home-water-glow 0.8s ease-in-out infinite alternate;
+    animation: home-water-glow 0.8s ease-in-out;
 }
 
 .home-element__img {

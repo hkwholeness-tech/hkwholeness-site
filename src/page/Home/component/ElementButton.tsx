@@ -7,6 +7,7 @@ interface Props {
     rotation: number;
     isGlowing: boolean;
     onSelect: (element: FiveElement) => void;
+    onGlowEnd: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
 export const ElementButton = React.memo((props: Props) => {
@@ -19,7 +20,7 @@ export const ElementButton = React.memo((props: Props) => {
             }}
         >
             <div className="home-element__counter" style={{transform: `rotate(${-props.rotation}deg)`}}>
-                <div className={classNames("home-element__stone", {"is-glowing": props.isGlowing})}>
+                <div className={classNames("home-element__stone", {"is-glowing": props.isGlowing})} onAnimationEnd={props.onGlowEnd}>
                     <img src={props.element.darkSrc} className="home-element__img home-element__img--dark" alt={`${props.element.label}-暗`} />
                     <img src={props.element.activeSrc} className="home-element__img home-element__img--active" alt={`${props.element.label}-金`} />
                 </div>

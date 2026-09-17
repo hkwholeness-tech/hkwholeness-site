@@ -15,7 +15,7 @@ import "./index.css";
 
 export const HomePage = () => {
     const {audioRef, isPlaying, lyricsActive, toggle, fadeOut} = useBackgroundMusic();
-    const {rotation, glowingId, selectElement} = useFiveElementsWheel();
+    const {rotation, glowingId, selectElement, handleSpinEnd, handleGlowEnd} = useFiveElementsWheel();
     const cycloneStyle: CycloneCssVars = {
         "--cyclone-desktop": `url("${cycloneDesktopSrc}")`,
         "--cyclone-mobile": `url("${cycloneMobileSrc}")`,
@@ -38,7 +38,7 @@ export const HomePage = () => {
                         <DesktopLyricsPanel isPlaying={isPlaying} lyricsActive={lyricsActive} onToggle={toggle} />
                         <VerticalTitle />
                         <MobileTopBar isPlaying={isPlaying} lyricsActive={lyricsActive} onToggle={toggle} />
-                        <FiveElementsWheel rotation={rotation} glowingId={glowingId} onSelect={onSelectElement} />
+                        <FiveElementsWheel rotation={rotation} glowingId={glowingId} onSelect={onSelectElement} onSpinEnd={handleSpinEnd} onGlowEnd={handleGlowEnd} />
                         <BottomInfoBar />
                     </div>
                 </main>
