@@ -1,0 +1,1617 @@
+<!doctype html>
+
+<html lang="zh-Hant">
+    <head>
+        <!-- 圖片預載 -->
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/木-按鍵-Gold-3.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/火-按鍵-Gold-2.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/土-按鍵-Gold-2.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/金-按鍵-Gold-2.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/水-按鍵-Gold-2.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/聆聽-按鍵-Gold.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/預約-按鍵Gold.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/2026/08/預約-按鍵White.png" />
+
+        <link rel="preload" as="image" href="https://www.hkwholeness.com/wp-content/uploads/wp-social/facebook/hkwholen/2017/03/17309118_682930111890008_7789685320572818881_n.jpg" />
+
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>能量破局 - 五行調理</title>
+
+        <!-- 引入水墨字型與楷體 -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Zhi+Mang+Xing&display=stylesheet" rel="stylesheet" />
+
+        <style>
+            /* 專門針對電腦版與手機版聆聽按鍵移除聚焦外框 */
+
+            #musicToggleBtn,
+            #mobileMusicToggleBtn,
+            #musicToggleBtn:focus,
+            #musicToggleBtn:active,
+            #mobileMusicToggleBtn:focus,
+            #mobileMusicToggleBtn:active {
+                outline: none !important;
+
+                box-shadow: none !important;
+
+                -webkit-tap-highlight-color: transparent !important;
+            }
+
+            /* 確保按鍵內部的 div 也不會有額外框線 */
+
+            #musicToggleBtn *,
+            #mobileMusicToggleBtn * {
+                outline: none !important;
+
+                box-shadow: none !important;
+            }
+
+            /* ===== 全局基礎設定 ===== */
+
+            body,
+            #Wrapper,
+            #Content,
+            .content_wrapper,
+            .section,
+            .sections_group {
+                margin: 0;
+
+                padding: 0;
+
+                font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+                background-color: #f5f2eb !important;
+
+                background-image: none !important;
+
+                color: #2c251e;
+
+                overflow-x: hidden;
+
+                min-height: 100vh;
+            }
+
+            .calligraphy-font {
+                font-family: "LXGW WenKai TC", "DFKai-SB", serif !important;
+            }
+
+            .page-wrapper {
+                display: flex;
+
+                flex-direction: column;
+
+                min-height: 100vh;
+            }
+
+            .main-container {
+                display: flex;
+
+                flex: 1;
+
+                position: relative;
+
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            /* ===================================================
+
+     1. 主要內容區與背景水墨
+
+     =================================================== */
+
+            .content-body {
+                flex: 1;
+
+                padding: 10px;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+
+                box-sizing: border-box;
+
+                width: 100%;
+            }
+
+            .inner-card {
+                position: relative;
+
+                background-color: rgba(253, 252, 249, 0.92);
+
+                backdrop-filter: blur(12px);
+
+                border-radius: 28px;
+
+                padding: 20px 40px 120px 40px;
+
+                box-shadow: 0 16px 40px rgba(44, 37, 30, 0.08);
+
+                border: 1px solid rgba(218, 208, 192, 0.6);
+
+                width: 100%;
+
+                max-width: 1350px;
+
+                box-sizing: border-box;
+
+                overflow: hidden;
+
+                z-index: 1;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            /* 電腦版背景預設 */
+
+            .inner-card::before {
+                content: "";
+
+                position: absolute;
+
+                top: 0;
+
+                left: 0;
+
+                width: 110%;
+
+                height: 100%;
+
+                background-image: url("https://www.hkwholeness.com/wp-content/uploads/2026/08/IMG_3527.png");
+
+                background-size: cover;
+
+                background-position: center;
+
+                background-repeat: no-repeat;
+
+                opacity: 0.75;
+
+                z-index: -1;
+
+                pointer-events: none;
+            }
+
+            /* ===================================================
+
+     2. 左側直排歌詞與控制區 (電腦版)
+
+     =================================================== */
+
+            .left-lyrics-container {
+                position: absolute;
+
+                left: 35px;
+
+                top: 50%;
+
+                transform: translateY(-50%);
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                align-items: center;
+
+                z-index: 10;
+
+                background: transparent;
+
+                padding: 0;
+
+                border: none;
+
+                box-shadow: none;
+            }
+
+            .lyrics-vertical-group {
+                display: flex;
+
+                flex-direction: row;
+
+                gap: 16px;
+
+                align-items: flex-start;
+            }
+
+            .lyrics-col-1,
+            .lyrics-col-2 {
+                writing-mode: vertical-rl;
+
+                text-orientation: upright;
+
+                font-size: 36px;
+
+                font-weight: 700;
+
+                color: #241b14 !important;
+
+                letter-spacing: 6px;
+
+                opacity: 0;
+
+                text-shadow:
+                    0 0 4px rgba(255, 230, 150, 0.9),
+                    0 0 10px rgba(255, 215, 0, 0.7),
+                    0 0 18px rgba(255, 180, 50, 0.4),
+                    0 2px 6px rgba(44, 37, 30, 0.3);
+
+                white-space: nowrap;
+
+                line-height: 1.3;
+            }
+
+            .lyrics-col-1 {
+                margin-top: 2.2em;
+            }
+
+            .lyrics-col-2 {
+                transform: translateY(-10px);
+            }
+
+            .left-lyrics-container.active .lyrics-col-1,
+            .left-lyrics-container.active .lyrics-col-2 {
+                animation: lyricsRevealV 30s forwards linear;
+            }
+
+            @keyframes lyricsRevealV {
+                0% {
+                    opacity: 0;
+                }
+
+                6% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            .music-control-stone-btn {
+                width: 110px;
+
+                height: 110px;
+
+                background: transparent;
+
+                border: none;
+
+                padding: 0;
+
+                cursor: pointer;
+
+                position: relative;
+
+                outline: none;
+
+                -webkit-tap-highlight-color: transparent;
+
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .music-control-stone-btn:hover {
+                transform: scale(1.06);
+            }
+
+            .stone-btn-wrapper {
+                position: relative;
+
+                width: 100%;
+
+                height: 100%;
+            }
+
+            .stone-img {
+                position: absolute;
+
+                top: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 100%;
+
+                object-fit: cover;
+
+                transition: opacity 0.4s ease;
+
+                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+
+                image-rendering: -webkit-optimize-contrast;
+            }
+
+            .stone-glow-img {
+                opacity: 0;
+            }
+
+            .music-control-stone-btn.is-playing .stone-img:not(.stone-glow-img) {
+                opacity: 0;
+            }
+
+            .music-control-stone-btn.is-playing .stone-glow-img {
+                opacity: 1;
+
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+            }
+
+            /* ===================================================
+
+     3. 右側大標題 (電腦版)
+
+     =================================================== */
+
+            .vertical-title-right {
+                position: absolute;
+
+                right: 35px;
+
+                top: 50%;
+
+                transform: translateY(-50%);
+
+                writing-mode: vertical-rl;
+
+                text-orientation: upright;
+
+                font-size: 44px;
+
+                font-weight: 1000;
+
+                color: #1a130f;
+
+                letter-spacing: 8px;
+
+                margin: 0;
+
+                padding: 12px 0;
+
+                border-left: 3px solid rgba(255, 220, 120, 0.8);
+
+                white-space: nowrap;
+
+                line-height: 1.2;
+
+                text-shadow:
+                    0 0 4px rgba(255, 255, 255, 1),
+                    0 0 10px rgba(255, 215, 0, 0.9),
+                    0 0 20px rgba(255, 180, 50, 0.7),
+                    0 2px 4px rgba(0, 0, 0, 0.8);
+            }
+
+            /* 手機專用頂部區塊（預設隱藏） */
+
+            .mobile-top-container {
+                display: none;
+
+                width: 100%;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                gap: 6px;
+
+                margin-bottom: 2px;
+
+                padding: 0 5px;
+
+                box-sizing: border-box;
+
+                z-index: 20;
+
+                position: relative;
+            }
+
+            .mobile-top-title {
+                font-family: "LXGW WenKai TC", "DFKai-SB", serif;
+
+                font-size: 25px;
+
+                font-weight: 900;
+
+                color: #111;
+
+                letter-spacing: 2px;
+
+                text-align: center;
+
+                white-space: nowrap;
+
+                text-shadow:
+                    0 0 10px rgba(255, 255, 255, 0.9),
+                    0 0 20px rgba(255, 215, 0, 0.5);
+
+                margin-bottom: 0;
+            }
+
+            .mobile-content-row {
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                gap: 12px;
+
+                width: 100%;
+            }
+
+            .mobile-horizontal-lyrics {
+                font-size: 14.5px;
+
+                font-weight: 700;
+
+                color: #111;
+
+                letter-spacing: 0.5px;
+
+                opacity: 0;
+
+                text-shadow:
+                    0 0 8px rgba(255, 215, 0, 1),
+                    0 0 15px rgba(255, 215, 0, 0.8),
+                    0 0 25px rgba(255, 255, 255, 0.8);
+
+                white-space: nowrap;
+            }
+
+            .mobile-horizontal-lyrics.shift-right {
+                margin-left: 1.2em;
+            }
+
+            .mobile-top-container.active .mobile-horizontal-lyrics {
+                animation: lyricsRevealH 30s forwards linear;
+            }
+
+            @keyframes lyricsRevealH {
+                0% {
+                    opacity: 0;
+                }
+
+                6% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            .mobile-stone-btn {
+                width: 58px;
+                height: 58px;
+                background: transparent !important;
+                border: none !important;
+                padding: 0;
+                cursor: pointer;
+                outline: none !important;
+                -webkit-tap-highlight-color: transparent !important;
+                flex-shrink: 0;
+                position: relative !important;
+                border-radius: 50% !important;
+                /* 改回 visible，讓光暈可以超出圓形邊界，唔會被裁切成方 */
+                overflow: visible !important;
+                -webkit-appearance: none !important;
+                appearance: none !important;
+                /* 加 transition，令光暈漸入漸出更自然 */
+                transition:
+                    box-shadow 0.4s ease,
+                    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+
+            .mobile-stone-btn:active,
+            .mobile-stone-btn:focus,
+            .mobile-stone-btn:focus-visible {
+                background: transparent !important;
+                background-color: transparent !important;
+                outline: none !important;
+                box-shadow: none !important;
+                border: none !important;
+            }
+
+            /* 強制手機版播放時切換圖片 */
+            .mobile-stone-btn.is-playing .stone-img:not(.stone-glow-img) {
+                opacity: 0 !important;
+            }
+            .mobile-stone-btn.is-playing .stone-glow-img {
+                opacity: 1 !important;
+                /* 移除圖片層級嘅 filter，避免被裁切 */
+            }
+
+            /* 按鈕層級嘅圓形金光 — 跟住 border-radius: 50%，永遠唔會變方 */
+            .mobile-stone-btn.is-playing {
+                box-shadow: 0 0 18px 5px rgba(255, 215, 0, 0.7) !important;
+            }
+
+            /* ===================================================
+
+     4. 陣法外框與五行旋轉盤
+
+     =================================================== */
+
+            .array-outer-container {
+                position: relative;
+
+                width: 880px;
+
+                height: 880px;
+
+                margin: 5px auto;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+            }
+
+            .five-elements-circle-wrapper {
+                position: absolute;
+
+                width: 100%;
+
+                height: 100%;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+
+                transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .center-person-wrapper {
+                position: absolute;
+
+                width: 250px;
+
+                height: 250px;
+
+                border-radius: 50%;
+
+                z-index: 5;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+                pointer-events: none;
+            }
+
+            .center-person-wrapper img {
+                width: 100%;
+
+                height: 100%;
+
+                object-fit: cover;
+
+                border-radius: 50%;
+
+                display: block;
+
+                filter: contrast(1.02) brightness(0.98);
+            }
+
+            /* ===================================================
+
+     5. 五行按鈕
+
+     =================================================== */
+
+            .circle-btn {
+                position: absolute;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                justify-content: center;
+
+                text-decoration: none;
+
+                z-index: 10;
+
+                width: 240px;
+
+                height: 240px;
+
+                border-radius: 50%;
+
+                background: transparent;
+
+                border: none;
+
+                cursor: pointer;
+
+                transform: translate(-50%, -50%);
+            }
+
+            .btn-wrapper {
+                position: relative;
+
+                width: 240px;
+
+                height: 240px;
+
+                border-radius: 0;
+
+                overflow: visible;
+
+                transition: all 0.3s ease;
+            }
+
+            .btn-img {
+                position: absolute;
+
+                top: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 100%;
+
+                object-fit: cover;
+
+                transition: all 0.4s ease;
+
+                filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.15));
+
+                image-rendering: -webkit-optimize-contrast;
+            }
+
+            .glow-img {
+                opacity: 0;
+            }
+
+            .circle-btn:hover .btn-img {
+                opacity: 0;
+            }
+
+            .circle-btn:hover .glow-img {
+                opacity: 1;
+
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            }
+
+            .circle-btn:hover {
+                transform: translate(-50%, -50%) scale(1.08) !important;
+            }
+
+            .btn-wood {
+                top: calc(50% - 300px);
+                left: 50%;
+            }
+
+            .btn-fire {
+                top: calc(50% - 92.7px);
+                left: calc(50% + 285.3px);
+            }
+
+            .btn-earth {
+                top: calc(50% + 242.7px);
+                left: calc(50% + 176.3px);
+            }
+
+            .btn-metal {
+                top: calc(50% + 242.7px);
+                left: calc(50% - 176.3px);
+            }
+
+            .btn-water {
+                top: calc(50% - 92.7px);
+                left: calc(50% - 285.3px);
+            }
+
+            @media (max-width: 992px) {
+                .array-outer-container {
+                    width: 620px;
+                    height: 620px;
+                }
+
+                .center-person-wrapper {
+                    width: 180px;
+                    height: 180px;
+                }
+
+                .circle-btn,
+                .btn-wrapper {
+                    width: 170px;
+                    height: 170px;
+                }
+
+                .btn-wood {
+                    top: calc(50% - 200px);
+                    left: 50%;
+                }
+
+                .btn-fire {
+                    top: calc(50% - 61.8px);
+                    left: calc(50% + 190.2px);
+                }
+
+                .btn-earth {
+                    top: calc(50% + 161.8px);
+                    left: calc(50% + 117.6px);
+                }
+
+                .btn-metal {
+                    top: calc(50% + 161.8px);
+                    left: calc(50% - 117.6px);
+                }
+
+                .btn-water {
+                    top: calc(50% - 61.8px);
+                    left: calc(50% - 190.2px);
+                }
+            }
+
+            @media (max-width: 600px) {
+                .array-outer-container {
+                    width: 320px;
+
+                    height: 320px;
+
+                    margin: 0 auto;
+
+                    margin-top: 0px;
+                }
+
+                .center-person-wrapper {
+                    width: 90px;
+                    height: 90px;
+                }
+
+                .circle-btn,
+                .btn-wrapper {
+                    width: 80px;
+                    height: 80px;
+                }
+
+                .btn-wood {
+                    top: calc(50% - 115px);
+                    left: 50%;
+                }
+
+                .btn-fire {
+                    top: calc(50% - 35px);
+                    left: calc(50% + 109px);
+                }
+
+                .btn-earth {
+                    top: calc(50% + 93px);
+                    left: calc(50% + 67px);
+                }
+
+                .btn-metal {
+                    top: calc(50% + 93px);
+                    left: calc(50% - 67px);
+                }
+
+                .btn-water {
+                    top: calc(50% - 35px);
+                    left: calc(50% - 109px);
+                }
+            }
+
+            .counter-rotate {
+                transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                justify-content: center;
+
+                width: 100%;
+
+                height: 100%;
+            }
+
+            /* ===== 五行各自的發光特效與色彩 ===== */
+
+            .wood-glow .btn-wrapper {
+                animation: woodGlow 0.8s infinite alternate ease-in-out;
+            }
+
+            .fire-glow .btn-wrapper {
+                animation: fireGlow 0.8s infinite alternate ease-in-out;
+            }
+
+            .earth-glow .btn-wrapper {
+                animation: earthGlow 0.8s infinite alternate ease-in-out;
+            }
+
+            .metal-glow .btn-wrapper {
+                animation: metalGlow 0.8s infinite alternate ease-in-out;
+            }
+
+            .water-glow .btn-wrapper {
+                animation: waterGlow 0.8s infinite alternate ease-in-out;
+            }
+
+            @keyframes woodGlow {
+                0% {
+                    filter: drop-shadow(0 0 10px #4caf50);
+                }
+
+                100% {
+                    filter: drop-shadow(0 0 25px #81c784);
+                }
+            }
+
+            @keyframes fireGlow {
+                0% {
+                    filter: drop-shadow(0 0 10px #f44336);
+                }
+
+                100% {
+                    filter: drop-shadow(0 0 25px #ff7043);
+                }
+            }
+
+            @keyframes earthGlow {
+                0% {
+                    filter: drop-shadow(0 0 10px #d4a373);
+                }
+
+                100% {
+                    filter: drop-shadow(0 0 25px #e9edc9);
+                }
+            }
+
+            @keyframes metalGlow {
+                0% {
+                    filter: drop-shadow(0 0 10px #ffd700);
+                }
+
+                100% {
+                    filter: drop-shadow(0 0 25px #ffae00);
+                }
+            }
+
+            @keyframes waterGlow {
+                0% {
+                    filter: drop-shadow(0 0 10px #2196f3);
+                }
+
+                100% {
+                    filter: drop-shadow(0 0 25px #64b5f6);
+                }
+            }
+
+            .btn-wood:hover .glow-img {
+                filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.8));
+            }
+
+            .btn-fire:hover .glow-img {
+                filter: drop-shadow(0 0 20px rgba(244, 67, 54, 0.8));
+            }
+
+            .btn-earth:hover .glow-img {
+                filter: drop-shadow(0 0 20px rgba(212, 163, 115, 0.8));
+            }
+
+            .btn-metal:hover .glow-img {
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            }
+
+            .btn-water:hover .glow-img {
+                filter: drop-shadow(0 0 20px rgba(33, 150, 243, 0.8));
+            }
+
+            /* ===================================================
+
+     6. 底部資訊列 (電腦版預設)
+
+     =================================================== */
+
+            .bottom-info-bar {
+                position: absolute;
+
+                bottom: 25px;
+
+                left: 0;
+
+                right: 0;
+
+                display: flex;
+
+                justify-content: center;
+
+                align-items: center;
+
+                z-index: 20;
+
+                pointer-events: none;
+            }
+
+            .bottom-content-group {
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                gap: 20px;
+
+                width: 100%;
+
+                pointer-events: auto;
+
+                padding-right: 130px;
+
+                padding-left: 130px;
+
+                box-sizing: border-box;
+            }
+
+            .bottom-whatsapp-btn {
+                width: 190px;
+
+                height: auto;
+
+                text-decoration: none;
+
+                background: transparent;
+
+                border: none;
+
+                padding: 0;
+
+                cursor: pointer;
+
+                position: relative;
+
+                outline: none;
+
+                flex-shrink: 0;
+
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+                transform: translateY(-60px);
+
+                left: -15px;
+
+                top: 0;
+            }
+
+            .bottom-whatsapp-btn .stone-img:not(.stone-glow-img) {
+                opacity: 1;
+            }
+
+            .bottom-whatsapp-btn .stone-img.stone-glow-img {
+                opacity: 0;
+            }
+
+            .bottom-whatsapp-btn:hover .stone-img:not(.stone-glow-img) {
+                opacity: 0;
+            }
+
+            .bottom-whatsapp-btn:hover .stone-img.stone-glow-img {
+                opacity: 1;
+
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+            }
+
+            .bottom-whatsapp-btn:hover {
+                transform: translateY(-60px) scale(1.06);
+            }
+
+            .address-box {
+                font-family: "LXGW WenKai TC", serif;
+
+                font-size: 22px;
+
+                font-weight: 600;
+
+                color: #3d2a14;
+
+                background: rgba(255, 253, 250, 0.88);
+
+                padding: 12px 28px;
+
+                line-height: 1.6;
+
+                border-radius: 8px;
+
+                border: 1px solid rgba(218, 208, 192, 0.6);
+
+                box-shadow: 0 3px 10px rgba(44, 37, 30, 0.05);
+
+                backdrop-filter: blur(6px);
+
+                letter-spacing: 0.8px;
+
+                white-space: nowrap;
+
+                text-align: center;
+            }
+
+            .mobile-line-break {
+                display: none;
+            }
+
+            .desktop-line-break {
+                display: inline;
+            }
+
+            /* ===================================================
+
+     7. RWD 響應式適配
+
+     =================================================== */
+
+            @media (max-width: 1400px) {
+                .vertical-title-right {
+                    display: none;
+                }
+
+                .left-lyrics-container {
+                    display: none;
+                }
+
+                .inner-card {
+                    padding: 20px 15px 40px 15px;
+                }
+
+                .bottom-info-bar {
+                    left: 15px;
+                    right: 15px;
+                    pointer-events: auto;
+                }
+
+                .bottom-content-group {
+                    padding: 0;
+                    justify-content: space-between;
+                }
+            }
+
+            @media (max-width: 850px) {
+                body {
+                    min-height: 100vh;
+
+                    display: flex;
+
+                    flex-direction: column;
+                }
+
+                .page-wrapper,
+                .main-container,
+                .content-body {
+                    flex: 1;
+
+                    display: flex;
+
+                    flex-direction: column;
+                }
+
+                .inner-card {
+                    background-image: url("https://www.hkwholeness.com/wp-content/uploads/2026/08/IMG_3527-2.png");
+
+                    background-size: 105%;
+
+                    background-position: center 60%;
+
+                    background-repeat: no-repeat;
+
+                    padding: 2px 0px 2px 0px;
+
+                    flex: 1;
+
+                    display: flex;
+
+                    flex-direction: column;
+
+                    justify-content: flex-start;
+
+                    box-sizing: border-box;
+
+                    width: 120vw;
+
+                    max-width: 100vw;
+
+                    margin-left: calc(-50vw + 50%);
+
+                    margin-right: calc(-50vw + 50%);
+
+                    border-radius: 0;
+
+                    min-height: 55vh;
+                }
+
+                .inner-card::before {
+                    display: none;
+                }
+
+                .mobile-top-container {
+                    display: flex;
+
+                    flex-shrink: 0;
+
+                    margin-top: 18px;
+                }
+
+                .mobile-top-title {
+                    margin-bottom: 8px;
+                }
+
+                .content-body {
+                    padding: 0px;
+                }
+
+                .center-person-wrapper {
+                    background: radial-gradient(circle, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0) 100%);
+
+                    box-shadow: 0 0 25px 15px rgba(255, 255, 255, 0.85);
+                }
+
+                .center-person-wrapper img {
+                    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 95%);
+
+                    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 95%);
+                }
+
+                .bottom-info-bar {
+                    position: absolute;
+
+                    bottom: 170px;
+
+                    left: 0;
+
+                    right: 0;
+
+                    width: 100%;
+
+                    z-index: 30;
+
+                    pointer-events: auto;
+                }
+
+                .bottom-content-group {
+                    position: relative;
+
+                    display: flex;
+
+                    justify-content: center;
+
+                    width: 100%;
+
+                    padding: 0;
+                }
+
+                .bottom-whatsapp-btn {
+                    display: block;
+
+                    position: absolute;
+
+                    top: auto;
+
+                    bottom: -30px;
+
+                    left: 50%;
+
+                    transform: translateX(-50%);
+
+                    width: 80px;
+
+                    height: 80px;
+
+                    margin: 0;
+
+                    z-index: 40;
+                }
+
+                .bottom-whatsapp-btn:hover {
+                    transform: translateX(-50%) scale(1.06);
+                }
+
+                .address-box {
+                    position: relative;
+
+                    text-align: center;
+
+                    width: 96%;
+
+                    box-sizing: border-box;
+
+                    font-size: 18px;
+
+                    white-space: normal;
+
+                    padding: 18px 1px 45px 5px;
+
+                    border-radius: 12px;
+
+                    line-height: 1.5;
+
+                    margin: 0;
+
+                    background: rgba(255, 253, 250, 0.92);
+
+                    border: 1px solid rgba(218, 208, 192, 0.6);
+
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+                }
+
+                .mobile-line-break {
+                    display: block;
+                }
+
+                .desktop-line-break {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <div class="main-container">
+                <main class="content-body">
+                    <div class="inner-card">
+                        <!-- 左側直排歌詞與控制區 (電腦版) -->
+
+                        <div class="left-lyrics-container" id="leftLyricsContainer">
+                            <button id="musicToggleBtn" class="music-control-stone-btn is-playing" title="點擊切換播放/暫停">
+                                <div class="stone-btn-wrapper">
+                                    <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/聆聽-按鍵-White.png" class="stone-img" alt="聆聽-暗" />
+
+                                    <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/聆聽-按鍵-Gold.png" class="stone-img stone-glow-img" alt="聆聽-金" />
+                                </div>
+                            </button>
+
+                            <div class="lyrics-vertical-group">
+                                <span class="lyrics-col-1 calligraphy-font">能量隨心發，破困解局人。</span>
+
+                                <span class="lyrics-col-2 calligraphy-font">我手即我心，我心可落針，</span>
+                            </div>
+                        </div>
+
+                        <!-- 右側直排標題 (電腦版) -->
+
+                        <h1 class="vertical-title-right calligraphy-font">善用五行，破解困局，重建健康</h1>
+
+                        <!-- ================= 手機專用頂部區塊 ================= -->
+
+                        <div class="mobile-top-container" id="mobileTopContainer">
+                            <div class="mobile-top-title calligraphy-font">善用五行，破解困局，重建健康</div>
+
+                            <div class="mobile-content-row">
+                                <button id="mobileMusicToggleBtn" class="mobile-stone-btn" title="點擊切換播放/暫停">
+                                    <div class="stone-btn-wrapper">
+                                        <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/聆聽-按鍵-White.png" class="stone-img" alt="聆聽-暗" />
+
+                                        <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/聆聽-按鍵-Gold.png" class="stone-img stone-glow-img" alt="聆聽-金" />
+                                    </div>
+                                </button>
+
+                                <div class="mobile-horizontal-lyrics-group">
+                                    <div class="mobile-horizontal-lyrics calligraphy-font">我手即我心，我心可落針，</div>
+
+                                    <div class="mobile-horizontal-lyrics calligraphy-font shift-right">能量隨心發，破困解局人。</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===================================================== -->
+
+                        <!-- 外層總容器 -->
+
+                        <div class="array-outer-container">
+                            <!-- 中間圓圈圖片 -->
+
+                            <div class="center-person-wrapper">
+                                <img src="https://www.hkwholeness.com/wp-content/uploads/wp-social/facebook/hkwholen/2017/03/17309118_682930111890008_7789685320572818881_n.jpg" alt="能量破局師傅樣" />
+                            </div>
+
+                            <!-- 旋轉五行盤 -->
+
+                            <div class="five-elements-circle-wrapper" id="elementsCircle">
+                                <!-- 木按鍵 -->
+
+                                <div class="circle-btn btn-wood" data-angle="0" data-glow="wood-glow" data-href="http://www.hkwholeness.com/木-全治氣針治療理論/">
+                                    <div class="counter-rotate">
+                                        <div class="btn-wrapper">
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/木-按鍵-Dark-2.png" class="btn-img" alt="木-暗" />
+
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/木-按鍵-Gold-3.png" class="btn-img glow-img" alt="木-金" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 火按鍵 -->
+
+                                <div class="circle-btn btn-fire" data-angle="72" data-glow="fire-glow" data-href="http://www.hkwholeness.com/火-善用五行破解人生逆境大論/">
+                                    <div class="counter-rotate">
+                                        <div class="btn-wrapper">
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/火-按鍵-Dark-2.png" class="btn-img" alt="火-暗" />
+
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/火-按鍵-Gold-2.png" class="btn-img glow-img" alt="火-金" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 土按鍵 -->
+
+                                <div class="circle-btn btn-earth" data-angle="144" data-glow="earth-glow" data-href="http://www.hkwholeness.com/土-真實見證・聯絡我們/">
+                                    <div class="counter-rotate">
+                                        <div class="btn-wrapper">
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/土-按鍵-Dark-2.png" class="btn-img" alt="土-暗" />
+
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/土-按鍵-Gold-2.png" class="btn-img glow-img" alt="土-金" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 金按鍵 -->
+
+                                <div class="circle-btn btn-metal" data-angle="216" data-glow="metal-glow" data-href="http://www.hkwholeness.com/金-收費標準・專業認證/">
+                                    <div class="counter-rotate">
+                                        <div class="btn-wrapper">
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/金-按鍵-Dark-2.png" class="btn-img" alt="金-暗" />
+
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/金-按鍵-Gold-2.png" class="btn-img glow-img" alt="金-金" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 水按鍵 -->
+
+                                <div class="circle-btn btn-water" data-angle="288" data-glow="water-glow" data-href="http://www.hkwholeness.com/水-治療教學・慈善施醫/">
+                                    <div class="counter-rotate">
+                                        <div class="btn-wrapper">
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/水-按鍵-Dark-2.png" class="btn-img" alt="水-暗" />
+
+                                            <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/水-按鍵-Gold-2.png" class="btn-img glow-img" alt="水-金" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 底部資訊列 -->
+
+                        <div class="bottom-info-bar">
+                            <div class="bottom-content-group">
+                                <!-- 底部預約按鍵 -->
+
+                                <a href="https://api.whatsapp.com/send?phone=85264999199" class="bottom-whatsapp-btn" target="_blank" title="專人預約">
+                                    <div class="stone-btn-wrapper">
+                                        <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/預約-按鍵White.png" class="stone-img" alt="專人預約-白字" />
+
+                                        <img src="https://www.hkwholeness.com/wp-content/uploads/2026/08/預約-按鍵Gold.png" class="stone-img stone-glow-img" alt="專人預約-金字" />
+                                    </div>
+                                </a>
+
+                                <!-- 地址與電話欄位 -->
+
+                                <div class="address-box">
+                                    地址：荔枝角長沙灣青山道 489-491 號
+
+                                    <br class="mobile-line-break" />香港工業中心 A 座 904 室
+
+                                    <br />📞 電話：6499 9199
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <audio id="bgMusicPlayer" src="https://www.hkwholeness.com/wp-content/uploads/2026/08/bgm02-1.mp3" preload="auto" loop></audio>
+
+        <script>
+            (function () {
+                const audio = document.getElementById("bgMusicPlayer");
+
+                const musicBtn = document.getElementById("musicToggleBtn");
+
+                const mobileMusicBtn = document.getElementById("mobileMusicToggleBtn");
+
+                const leftContainer = document.getElementById("leftLyricsContainer");
+
+                const mobileTopContainer = document.getElementById("mobileTopContainer");
+
+                function fadeOutMusic(duration = 1000) {
+                    const step = 50;
+
+                    const iterations = duration / step;
+
+                    const volumeStep = audio.volume / iterations;
+
+                    const fadeInterval = setInterval(() => {
+                        if (audio.volume > volumeStep) {
+                            audio.volume -= volumeStep;
+                        } else {
+                            audio.volume = 0;
+
+                            audio.pause();
+
+                            clearInterval(fadeInterval);
+                        }
+                    }, step);
+                }
+
+                function triggerLyricsAnimation() {
+                    if (leftContainer) {
+                        leftContainer.classList.remove("active");
+
+                        void leftContainer.offsetWidth;
+
+                        leftContainer.classList.add("active");
+                    }
+
+                    if (mobileTopContainer) {
+                        mobileTopContainer.classList.remove("active");
+
+                        void mobileTopContainer.offsetWidth;
+
+                        mobileTopContainer.classList.add("active");
+                    }
+                }
+
+                function updatePlayState(isPlaying) {
+                    if (musicBtn) {
+                        if (isPlaying) musicBtn.classList.add("is-playing");
+                        else musicBtn.classList.remove("is-playing");
+                    }
+
+                    if (mobileMusicBtn) {
+                        if (isPlaying) mobileMusicBtn.classList.add("is-playing");
+                        else mobileMusicBtn.classList.remove("is-playing");
+                    }
+                }
+
+                function toggleMusic() {
+                    if (audio.paused) {
+                        audio.volume = 1;
+
+                        audio
+                            .play()
+                            .then(() => {
+                                updatePlayState(true);
+
+                                triggerLyricsAnimation();
+                            })
+                            .catch(err => {
+                                console.log("播放被阻擋或發生錯誤:", err);
+                            });
+                    } else {
+                        audio.pause();
+
+                        updatePlayState(false);
+                    }
+                }
+
+                if (musicBtn) musicBtn.addEventListener("click", toggleMusic);
+
+                if (mobileMusicBtn) mobileMusicBtn.addEventListener("click", toggleMusic);
+
+                window.addEventListener("DOMContentLoaded", () => {
+                    audio
+                        .play()
+                        .then(() => {
+                            updatePlayState(true);
+
+                            triggerLyricsAnimation();
+                        })
+                        .catch(err => {
+                            console.log("瀏覽器自動播放受阻，等待使用者互動解鎖:", err);
+
+                            updatePlayState(false);
+
+                            const unlockAudio = function () {
+                                audio.volume = 1;
+
+                                audio
+                                    .play()
+                                    .then(() => {
+                                        updatePlayState(true);
+
+                                        triggerLyricsAnimation();
+
+                                        document.removeEventListener("click", unlockAudio);
+
+                                        document.removeEventListener("touchstart", unlockAudio);
+                                    })
+                                    .catch(e => console.log("解鎖播放失敗:", e));
+                            };
+
+                            document.addEventListener("click", unlockAudio, {once: true});
+
+                            document.addEventListener("touchstart", unlockAudio, {once: true});
+                        });
+                });
+
+                const circle = document.getElementById("elementsCircle");
+
+                const buttons = document.querySelectorAll(".circle-btn");
+
+                const counterRotates = document.querySelectorAll(".counter-rotate");
+
+                let isNavigating = false;
+
+                buttons.forEach(btn => {
+                    btn.addEventListener("click", function (e) {
+                        if (isNavigating) return;
+
+                        isNavigating = true;
+
+                        const targetAngle = parseInt(this.getAttribute("data-angle"));
+
+                        const targetHref = this.getAttribute("data-href");
+
+                        const targetGlowClass = this.getAttribute("data-glow");
+
+                        const rotationNeeded = (360 - targetAngle) % 360;
+
+                        fadeOutMusic(1000);
+
+                        buttons.forEach(b => {
+                            b.classList.remove("wood-glow", "fire-glow", "earth-glow", "metal-glow", "water-glow");
+                        });
+
+                        circle.style.transform = `rotate(${rotationNeeded}deg)`;
+
+                        counterRotates.forEach(cr => {
+                            cr.style.transform = `rotate(${-rotationNeeded}deg)`;
+                        });
+
+                        setTimeout(() => {
+                            this.classList.add(targetGlowClass);
+
+                            setTimeout(() => {
+                                window.location.href = targetHref;
+                            }, 800);
+                        }, 1000);
+                    });
+                });
+            })();
+        </script>
+    </body>
+</html>

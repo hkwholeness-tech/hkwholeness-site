@@ -1,2 +1,13 @@
+@import "tailwindcss";
+
 :root {
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a.active {
+    font-weight: 700;
 }
