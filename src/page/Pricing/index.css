@@ -368,17 +368,17 @@
 
     .pricing-page__card {
         padding: 20px 15px;
-        background-size: 60% auto;
-        background-position: right 10px top 10px;
+        background-size: 50% auto;
+        background-position: right 0 top 6px;
     }
 
     .pricing-page__card-header {
         max-width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     .pricing-page__card-title {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .pricing-page__cert-gallery {
