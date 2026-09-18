@@ -1,5 +1,7 @@
 import React from "react";
 
+let hasAutoPlayed = false;
+
 export function useBackgroundMusic() {
     const audioRef = React.useRef<HTMLAudioElement>(null);
     const fadeTimerRef = React.useRef<number | null>(null);
@@ -101,17 +103,20 @@ export function useBackgroundMusic() {
             document.removeEventListener("touchstart", unlock);
         };
 
-        (async () => {
-            try {
-                await audio.play();
-                setIsPlaying(true);
-                restartLyrics();
-            } catch {
-                setIsPlaying(false);
-                document.addEventListener("click", unlock);
-                document.addEventListener("touchstart", unlock);
-            }
-        })();
+        if (!hasAutoPlayed) {
+            hasAutoPlayed = true;
+            (async () => {
+                try {
+                    await audio.play();
+                    setIsPlaying(true);
+                    restartLyrics();
+                } catch {
+                    setIsPlaying(false);
+                    document.addEventListener("click", unlock);
+                    document.addEventListener("touchstart", unlock);
+                }
+            })();
+        }
 
         return () => {
             document.removeEventListener("click", unlock);
