@@ -88,11 +88,15 @@
 - 子元素以反向旋轉（`rotate(-rotation)`）保持文字／圖示正向。
 - 元素具 idle／active 兩張圖，選中時發光。
 
-**背景音樂**（`useBackgroundMusic`）
+**背景音樂**（`useBackgroundMusic` + `MusicToggleButton`）
 
-- 頁面載入嘗試自動播放；被瀏覽器攔截時，註冊 `click` / `touchstart` 一次性解鎖後播放。
-- 模組層級 `hasAutoPlayed` 確保每個 session 只自動播放一次。
-- `toggle` 控制播放／暫停；點擊任一元素導航前 `fadeOut(1000ms)` 淡出。
+- 不自動播放；亦不在 `document` 的 `click` / `touchstart` 解鎖後播放。
+- 只由「聆聽」按鈕觸發播放：桌面 `#musicToggleBtn`、手機 `#mobileMusicToggleBtn`，以 `data-playing` 反映狀態。
+- `<audio>`（`Home/index.tsx` 的 `music.mp3`）無 `loop`：每輪只播一次。
+- 播完觸發 `ended`，將 `isPlaying` 設為 `false`，聆聽按鈕回到 idle。
+- 再次 `play()` 時若 `audio.ended`，先將 `currentTime` 歸零再播。
+- `toggle` 控制播放／暫停（未結束前可暫停後續播）。
+- 點擊任一元素導航前 `fadeOut(1000ms)` 淡出；離開首頁時 pause。內容頁（如 `/theory`）沒有音訊。
 - 播放時重啟歌詞動畫（雙行歌詞）。
 
 **版面**
@@ -194,12 +198,7 @@ pnpm build
 
 ## 10. 代碼規範
 
-- 所有 `import React` 置頂；`.css` import 置於最後。
-- 使用完整 `<React.Fragment>`；以 `React.xxx()` 呼叫 API；`export const Component`。
-- Custom Hook 使用 `export function useXxx`。
-- Component 內部函式用 arrow function，非必要不使用 `useCallback`。
-- Prettier：4 空格、printWidth 200、`trailingComma: es5`、`bracketSpacing: false`、`arrowParens: avoid`。
-- 驗證：**只執行 Type Check 與 Prettier，不執行 ESLint**。
+寫碼慣例以 [AGENTS.md](./AGENTS.md) 為準。
 
 ## 11. 目錄結構
 
