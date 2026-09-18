@@ -125,6 +125,7 @@ JSX 用 `react-jsx`。純 markup、沒用 `React.xxx` 的檔（例如 `Home/inde
 - Modifier：`block__element--foo` 或 `block--foo`（`home-music--desktop`、`home-element--wood`）。
 - 布林狀態 class：`is-open`、`is-visible`、`is-glowing`。
 - 由 React 驅動的狀態優先 `data-*`（`data-playing`、`data-active`），CSS 用 `[data-playing="true"]`。
+- `:hover` 一律包喺 `@media (hover: hover) and (pointer: fine)`；否則 iOS 觸控要剔兩下先出到 `click`。
 - 浮水印／背景圖用 CSS 變數（`--theory-watermark`、`--cyclone-desktop`），JS 傳 `url("…")`。
 - 響應式寫在該 CSS 檔底部。內容頁常用 `768px` 或 `860px`；首頁有自己的 breakpoint，不要亂套。
 - 改了 `className` 字串才跑 `pnpm lint:tw`。
