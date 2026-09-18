@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router";
-import FireImage from "./asset/fire.png";
+import FireImage from "./asset/fire.webp";
 import type {SpiritCssVars} from "./type";
 import "./index.css";
 

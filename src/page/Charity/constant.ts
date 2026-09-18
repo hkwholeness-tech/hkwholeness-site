@@ -1,13 +1,13 @@
-import Clinic0531Image from "./asset/clinic-2025-05-31.jpg";
-import Clinic0809Image from "./asset/clinic-2026-08-09.jpg";
-import Clinic0823Image from "./asset/clinic-2026-08-23.jpg";
-import ClinicMapImage from "./asset/clinic-map.png";
+import Clinic0531Image from "./asset/clinic-2025-05-31.webp";
+import Clinic0809Image from "./asset/clinic-2026-08-09.webp";
+import Clinic0823Image from "./asset/clinic-2026-08-23.webp";
+import ClinicMapImage from "./asset/clinic-map.webp";
 import ClinicVideo1 from "./asset/clinic-video-1.mp4";
 import ClinicVideo2 from "./asset/clinic-video-2.mp4";
-import TeachingCaritasImage from "./asset/teaching-caritas.png";
-import TeachingUnionImage from "./asset/teaching-union.png";
-import TianyiImage from "./asset/tianyi-illustration.png";
-import WaterImage from "./asset/water.png";
+import TeachingCaritasImage from "./asset/teaching-caritas.webp";
+import TeachingUnionImage from "./asset/teaching-union.webp";
+import TianyiImage from "./asset/tianyi-illustration.webp";
+import WaterImage from "./asset/water.webp";
 import type {ClinicSession, TeachingCard, TianyiRow} from "./type";
 
 export const WATERMARK_SRC = WaterImage;

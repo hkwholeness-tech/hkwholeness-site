@@ -15,7 +15,7 @@ import Case7After from "./asset/case7-after.jpg";
 import Case7Before from "./asset/case7-before.jpg";
 import Case8After from "./asset/case8-after.jpg";
 import Case8Before from "./asset/case8-before.jpg";
-import EarthImage from "./asset/earth.png";
+import EarthImage from "./asset/earth.webp";
 import type {ScheduleRow, VideoCase, XrayCase} from "./type";
 
 export const WATERMARK_SRC = EarthImage;

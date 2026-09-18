@@ -1,5 +1,5 @@
-import CycloneDesktopImage from "./asset/cyclone-desktop.png";
-import CycloneMobileImage from "./asset/cyclone-mobile.png";
+import CycloneDesktopImage from "./asset/cyclone-desktop.webp";
+import CycloneMobileImage from "./asset/cyclone-mobile.webp";
 import MusicAsset from "./asset/music.mp3";
 import {BottomInfoBar} from "./component/BottomInfoBar";
 import {DesktopLyricsPanel} from "./component/DesktopLyricsPanel";

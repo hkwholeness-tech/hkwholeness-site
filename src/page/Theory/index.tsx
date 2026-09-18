@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router";
-import WoodImage from "./asset/wood.png";
+import WoodImage from "./asset/wood.webp";
 import type {TheoryCssVars} from "./type";
 import "./index.css";
 

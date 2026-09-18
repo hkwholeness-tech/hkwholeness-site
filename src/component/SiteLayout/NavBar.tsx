@@ -1,5 +1,5 @@
 import {Link} from "react-router";
-import LogoImage from "./asset/logo.png";
+import LogoImage from "./asset/logo.webp";
 
 export const NavBar = () => {
     return (

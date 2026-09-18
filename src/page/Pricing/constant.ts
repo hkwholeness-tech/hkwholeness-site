@@ -1,10 +1,10 @@
-import Cert1Image from "./asset/cert1-nutrition-master.jpg";
-import Cert2Image from "./asset/cert2-food-nutrition-science.jpg";
-import Cert3Image from "./asset/cert3-natural-medicine.jpg";
-import Cert4Image from "./asset/cert4-huatuo-doctor.jpg";
-import Cert5Image from "./asset/cert5-tui-na-association.jpg";
-import IllustrationImage from "./asset/pricing-illustration.png";
-import MetalImage from "./asset/metal.png";
+import Cert1Image from "./asset/cert1-nutrition-master.webp";
+import Cert2Image from "./asset/cert2-food-nutrition-science.webp";
+import Cert3Image from "./asset/cert3-natural-medicine.webp";
+import Cert4Image from "./asset/cert4-huatuo-doctor.webp";
+import Cert5Image from "./asset/cert5-tui-na-association.webp";
+import IllustrationImage from "./asset/pricing-illustration.webp";
+import MetalImage from "./asset/metal.webp";
 import type {Certificate, CertificateImage, PriceRow} from "./type";
 
 export const WATERMARK_SRC = MetalImage;
