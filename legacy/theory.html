@@ -1,0 +1,317 @@
+<style>
+    /* 1. 頂部 Menu Bar 優化 */
+    #Header,
+    .site-header,
+    #Top_bar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #e5eadf !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    }
+
+    #Top_bar .menu > li > a,
+    .main-navigation a {
+        color: #222222 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 2. 全頁背景設定：微染色竹青綠（#F4F7F2），營造青綠水墨宣紙質感 */
+    #Subheader,
+    .ast-title-bar-wrap,
+    #Content,
+    .content_wrapper,
+    .site-content,
+    #main {
+        background-color: #f4f7f2 !important;
+        background-image: none !important;
+        border: none !important;
+    }
+
+    /* 3. 滿版容器 */
+    .wood-content-container {
+        width: 100%;
+        max-width: 1200px !important;
+        margin: 0 auto;
+        padding: 30px 40px;
+        box-sizing: border-box;
+        background-color: #f4f7f2 !important;
+        /* 同步竹青綠底色 */
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    /* 4. 水墨大樹浮水印：墨綠融底 + 柔和羽化遮罩 */
+    .wood-content-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background-image: url("https://www.hkwholeness.com/wp-content/uploads/2026/06/木.png");
+        background-repeat: no-repeat;
+        background-position: center 150px;
+        background-size: 1100px auto;
+
+        /* 徑向羽化遮罩，消失邊框 */
+        -webkit-mask-image: radial-gradient(ellipse at center 35%, black 25%, transparent 75%);
+        mask-image: radial-gradient(ellipse at center 35%, black 25%, transparent 75%);
+
+        /* 墨綠色濾鏡調整 */
+        filter: contrast(130%) brightness(105%) sepia(100%) hue-rotate(85deg) saturate(120%);
+
+        opacity: 0.2 !important;
+        mix-blend-mode: multiply !important;
+
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* 5. 頂部標題區包裝（用於右上方按鈕定位） */
+    .wood-header-wrapper {
+        position: relative;
+        z-index: 2;
+        margin-top: 10px;
+        margin-bottom: 35px;
+        padding-top: 10px;
+    }
+
+    /* 6. 右上角返回首頁按鈕：符合木頁面的古銅金綠質感 */
+    .wood-top-back-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: rgba(255, 255, 255, 0.75) !important;
+        color: #614d24 !important;
+        border: 1px solid rgba(97, 77, 36, 0.3) !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 20px;
+        font-size: 13.5px;
+        font-weight: bold;
+        backdrop-filter: blur(3px);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .wood-top-back-btn:hover {
+        background-color: #556b49 !important;
+        color: #ffffff !important;
+        border-color: #556b49 !important;
+    }
+
+    /* 7. 文章大標題：濃郁古銅綠金 */
+    .wood-title {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+        color: #614d24 !important;
+        margin: 0 0 12px 0;
+        letter-spacing: 1px;
+    }
+
+    /* 8. 副標題 */
+    .wood-meta {
+        text-align: center;
+        font-size: 14.5px;
+        color: #556052 !important;
+        margin: 0;
+    }
+
+    /* 9. 段落文字：深墨灰，保證極高閱讀性 */
+    .wood-text {
+        font-size: 16.5px;
+        line-height: 1.85;
+        text-align: justify;
+        margin-bottom: 25px;
+        color: #2d332b !important;
+        text-indent: 2em;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 10. 恩師名單區塊：半透明暖白，營造水墨宣紙疊色感 */
+    .mentor-box {
+        background: rgba(255, 255, 255, 0.72) !important;
+        backdrop-filter: blur(3px);
+        border-radius: 6px;
+        padding: 22px 28px;
+        margin: 30px 0;
+        border: 1px solid rgba(195, 205, 188, 0.8) !important;
+        font-size: 15px;
+        color: #2d332b !important;
+        line-height: 2;
+        position: relative;
+        z-index: 2;
+    }
+
+    .mentor-title {
+        color: #614d24 !important;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .mentor-dot {
+        color: #8c733e !important;
+        margin: 0 6px;
+        font-weight: bold;
+    }
+
+    /* 11. 重點卡片：暖金綠邊框 + 半透明柔白底 */
+    .wood-highlight-card {
+        border-left: 4px solid #8c733e !important;
+        background: rgba(255, 255, 255, 0.72) !important;
+        backdrop-filter: blur(3px);
+        padding: 22px 25px;
+        margin: 35px 0;
+        border-radius: 0 6px 6px 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .wood-highlight-card p {
+        margin: 0;
+        font-size: 16px;
+        color: #2d332b !important;
+        text-align: justify;
+        text-indent: 0;
+    }
+
+    /* 12. 小標題 */
+    .wood-h4-title {
+        font-size: 21px;
+        color: #614d24 !important;
+        border-left: 4px solid #8c733e;
+        padding-left: 12px;
+        margin-top: 45px;
+        margin-bottom: 22px;
+        font-weight: bold;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 15. 底部返回按鈕 */
+    .wood-back-btn {
+        display: block;
+        width: 160px;
+        margin: 40px auto 10px auto;
+        padding: 10px 0;
+        background-color: #556052 !important;
+        /* 已修正漏掉的冒號 */
+        color: #ffffff !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 25px;
+        font-size: 14px !important;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+    }
+
+    .wood-back-btn:hover {
+        background-color: #614d24 !important;
+    }
+
+    /* 手機端 RWD 適應 */
+    @media (max-width: 768px) {
+        .wood-content-container {
+            padding: 20px 15px;
+        }
+
+        .wood-content-container::before {
+            background-size: 650px auto;
+            background-position: center 80px;
+        }
+
+        .wood-header-wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+
+        .wood-top-back-btn {
+            position: static;
+            margin-bottom: 15px;
+        }
+
+        .wood-title {
+            font-size: 22px;
+        }
+
+        .wood-h4-title {
+            font-size: 18px;
+        }
+
+        .wood-text {
+            font-size: 15.5px;
+            text-indent: 0;
+        }
+    }
+</style>
+
+<!-- 扁平化滿版容器 -->
+<div class="wood-content-container">
+    <!-- 標題與右上角返回按鈕包裝區塊 -->
+    <div class="wood-header-wrapper">
+        <a href="https://www.hkwholeness.com/" class="wood-top-back-btn">🏠 返回首頁</a>
+        <h1 class="wood-title">全治氣針治療理論</h1>
+        <div class="wood-meta">撰文：劍峰醫師 ｜ 治療理論：木</div>
+    </div>
+
+    <p class="wood-text">
+        劍峰醫師在求學時期，因母親深受病痛折磨，深切體會到健康對個人及整個家庭的深遠影響，因而決定將此生奉獻於健康事業。從赴英國修讀醫療科學，到北京攻讀中醫理論博士，沿途有幸得到多位良師益友的悉心指導與啟發。
+    </p>
+
+    <div class="mentor-box">
+        <span class="mentor-title">在此，向以下恩師致以最誠摯的感謝（排名不分先後）：</span>
+        <span class="mentor-dot">•</span> Dr Paul Amuna <span class="mentor-dot">•</span> 林傲凡醫師 <span class="mentor-dot">•</span> 張仁傑老師 <span class="mentor-dot">•</span> 馮錦滿醫師
+        <span class="mentor-dot">•</span> 吳振民老師 <span class="mentor-dot">•</span> 林建文老師 <span class="mentor-dot">•</span> 龍層花醫師 <span class="mentor-dot">•</span> 謝慶良醫師
+    </div>
+
+    <p class="wood-text">
+        在行醫的歷程中，劍峰醫師由營養師開始起步，逐步深入鑽研中醫整脊、日本靈氣及西方脊骨醫學。隨著臨床經驗的累積，能處理的身體問題日漸增多。在面對一般的肌肉與骨骼錯位時，已能掌握相對穩妥且具信心的復位修正方法。然而，在臨床上依然存在一種相當棘手的挑戰——<b>退化性病變</b>。
+    </p>
+
+    <div class="wood-highlight-card">
+        <p>
+            對於新症，因身體仍保有較強的自我修正與康復動力，醫師往往只需將關節與筋腱引導至正確位置，機體便能逐步自我復原。但面對退化性問題，無論給予何種傳統刺激，身體的反應普遍微弱，治療效果亦往往較為短暫。
+        </p>
+    </div>
+
+    <h4 class="wood-h4-title">從微觀規律 走向「頻率治療手法」</h4>
+    <p class="wood-text">
+        為了尋求更穩定的療效，醫師開始專注於身體微觀的規律。研究中發現，人體各個部位其實存在一種自發性的微細律動，無論是左右擴張或左右旋轉，都呈現特定的頻率，且與病人的呼吸及心跳無關。後來，在接觸並學習顱骶治療（神經頻率）後，醫師理解到醫者若能順應並引導這種頻率，幫助病人將這種微弱的波動逐步穩定與擴大，退化性問題往往能獲得顯著的改善。
+    </p>
+    <p class="wood-text">
+        顱骶治療的核心原理原是用於放鬆大樞紐神經，但在臨床實踐中，醫師發現它對脊椎與肌肉的退化性問題同樣具有助益。為此，醫師嘗試為人體各個關節設計相應的手法。歷經系統化的整理與簡化，目前總結出二十多種針對脊椎與四肢手腳的手法，並將其命名為<b>「頻率治療手法」</b>。
+    </p>
+    <p class="wood-text">由於這套手法著重安全性與溫和性，入門門檻相對較低，目前已具備在工聯會或老人中心推廣的條件，以便長者們能在安全的前提下進行日常的互相保健。</p>
+
+    <h4 class="wood-h4-title">突破局限：氣針與古典五行波形</h4>
+    <p class="wood-text">
+        儘管身體手法能帶來改善，但面對眼睛、耳鼻、大腦及內臟等範疇依然難以觸及。幸運的是，在一次拜訪國內中醫的機緣下，醫師有機會親身體驗並接觸到「氣針」的應用。由於過往長期專研身體的神經頻率，在理解與掌握其原理時感到格外順暢。
+    </p>
+    <p class="wood-text">
+        在臨床體會中，氣針與神經頻率治療在內核上相通，皆需要醫師去調節並對準特定的生物頻率，與病人的機體產生共鳴。當頻率達成共振時，生物信號便能有效輸出，從而協助調整病人身體整體的修復韻律。隨著經驗的沉澱，這種頻率共振的距離與精準度亦會隨之提升。
+    </p>
+    <p class="wood-text">
+        行醫約 15 年、掌握氣針理論與實踐約 5
+        年後，研究迎來了新的突破。醫師發現與病人頻率產生共振時，除了傳遞基礎的波動外，若在輸出的波形（波形特性）上作進一步的精細調整，能產生不同的調理屬性，這與傳統中醫所提及的「木、火、土、金、水」五行概念不謀而合。<b
+            >人體組織或許無法理解言語，但對生物波形的物理反饋卻非常直接。</b
+        >
+    </p>
+    <p class="wood-text">
+        至於在不同階段需要應用何種波形，這屬於相對前沿且抽象的探索，過往的文獻與師承已難以直接給予現成答案。醫師選擇回到古典中醫的整體觀，經歷反覆的實踐與觀察，逐步釐清了身體的修復進程：<b>首先，需要「木」的元素來提供生長與修復組織的基礎動能</b>；其次，需要「水」的特性進行滋潤，以協助清理體內的局部堵塞；隨後，則需要「火」的特質來促進溫通與血液循環。至於「土、金、日、月、光」等其餘波形頻率的臨床應用，日後有機會再與大家詳細分享。
+    </p>
+
+    <!-- 原先底部的返回按鍵 -->
+
+    <a href="https://www.hkwholeness.com/" class="wood-back-btn">返回網站首頁</a>
+</div>

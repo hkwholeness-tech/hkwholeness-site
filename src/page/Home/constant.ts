@@ -37,7 +37,7 @@ export const FIVE_ELEMENTS: FiveElement[] = [
     {
         id: "wood",
         angle: 0,
-        href: "http://www.hkwholeness.com/木-全治氣針治療理論/",
+        href: "/theory",
         label: "木",
         darkSrc: WoodImage,
         activeSrc: WoodActiveImage,

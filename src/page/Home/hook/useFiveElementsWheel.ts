@@ -1,11 +1,13 @@
 import React from "react";
 import type {ElementId, FiveElement} from "../type";
+import {useNavigate} from "react-router";
 
 export function useFiveElementsWheel() {
     const navigatingRef = React.useRef(false);
     const targetRef = React.useRef<FiveElement | null>(null);
     const [rotation, setRotation] = React.useState(0);
     const [glowingId, setGlowingId] = React.useState<ElementId | null>(null);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         const handlePageShow = () => {
@@ -27,7 +29,7 @@ export function useFiveElementsWheel() {
         const rotationNeeded = (360 - element.angle) % 360;
         const delta = (rotationNeeded - (rotation % 360) + 360) % 360;
         if (delta === 0) {
-            window.location.href = element.href;
+            navigate(element.href);
             return;
         }
         navigatingRef.current = true;
@@ -46,7 +48,7 @@ export function useFiveElementsWheel() {
         }
         targetRef.current = null;
         navigatingRef.current = false;
-        window.location.href = element.href;
+        navigate(element.href);
     };
 
     return {rotation, glowingId, selectElement, handleSpinEnd};
