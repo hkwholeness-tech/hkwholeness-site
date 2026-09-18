@@ -1,0 +1,931 @@
+<style>
+    /* 1. 頂部 Menu Bar 優化 */
+    #Header,
+    .site-header,
+    #Top_bar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #eae2d8 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+        z-index: 800 !important;
+    }
+
+    #Top_bar .menu > li > a,
+    .main-navigation a {
+        color: #222222 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 2. 全頁背景：溫暖沙陶底色（#F6F2EB） */
+    #Subheader,
+    .ast-title-bar-wrap,
+    #Content,
+    .content_wrapper,
+    .site-content,
+    #main {
+        background-color: #f6f2eb !important;
+        background-image: none !important;
+        border: none !important;
+    }
+
+    /* 3. 土頁面滿版容器 */
+    .earth-page-container {
+        width: 100%;
+        max-width: 1100px !important;
+        margin: 0 auto;
+        padding: 30px 40px;
+        padding-top: 75px;
+        /* 預留頂部按鈕空間，避免被遮擋 */
+        box-sizing: border-box;
+        font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        color: #332b27;
+        line-height: 1.8;
+        background-color: #f6f2eb !important;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    /* -----------------------------------------------------
+       右上角固定按鈕區 (固定於滿版容器右上角，不使用浮動懸浮)
+       ----------------------------------------------------- */
+    .top-fixed-actions {
+        position: absolute !important;
+        top: 25px !important;
+        right: 40px !important;
+        z-index: 10 !important;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        background: rgba(246, 242, 235, 0.92) !important;
+        padding: 6px 10px !important;
+        border-radius: 20px;
+        box-shadow: 0 3px 12px rgba(110, 59, 30, 0.12) !important;
+    }
+
+    .earth-quick-btn,
+    .earth-home-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: 12.5px !important;
+        font-weight: bold;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    /* 快速直達個案按鈕 (主色調) */
+    .earth-quick-btn {
+        background-color: #8a4822 !important;
+        color: #ffffff !important;
+        border: 1px solid #8a4822 !important;
+    }
+
+    .earth-quick-btn:hover {
+        background-color: #6e3b1e !important;
+    }
+
+    /* 返回首頁按鈕 (精緻白底) */
+    .earth-home-btn {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        color: #6e3b1e !important;
+        border: 1px solid #d3c3b2 !important;
+    }
+
+    .earth-home-btn:hover {
+        background-color: #ffffff !important;
+        border-color: #8a4822 !important;
+    }
+
+    /* 4. 水墨「土」字浮水印（固定於螢幕正中央） */
+    .earth-page-container::before {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        height: 100vh;
+        background-image: url("https://www.hkwholeness.com/wp-content/uploads/2026/06/土-Final.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: min(700px, 80vw) auto;
+
+        -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 35%, rgba(0, 0, 0, 0) 48%);
+        mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 35%, rgba(0, 0, 0, 0) 48%);
+
+        filter: sepia(60%) hue-rotate(330deg) saturate(140%);
+        opacity: 0.12 !important;
+        mix-blend-mode: multiply !important;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* 主標題樣式 */
+    .earth-title {
+        font-size: 28px !important;
+        font-weight: bold !important;
+        color: #332b27 !important;
+        margin-bottom: 8px !important;
+        margin-top: 10px !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+        display: block !important;
+    }
+
+    .earth-subtitle {
+        font-size: 13.5px !important;
+        color: #8a4822 !important;
+        letter-spacing: 1px;
+        margin-bottom: 25px !important;
+        text-align: center !important;
+    }
+
+    /* h4 標題與左側豎線 */
+    .earth-h4-title {
+        font-size: 18px !important;
+        font-weight: bold !important;
+        color: #332b27 !important;
+        margin-top: 40px !important;
+        margin-bottom: 20px !important;
+        padding-left: 12px !important;
+        border-left: 4px solid #8a4822 !important;
+        line-height: 1.2 !important;
+        text-align: left !important;
+    }
+
+    /* 8. 聯絡資訊區塊 (Grid 雙欄) */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 2;
+        align-items: stretch;
+    }
+
+    .contact-card {
+        background: rgba(255, 255, 255, 0.92) !important;
+        backdrop-filter: blur(5px);
+        border: 1px solid #e2d7cb !important;
+        border-top: 4px solid #8a4822 !important;
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: 0 4px 15px rgba(110, 59, 30, 0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contact-info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 15px 0;
+    }
+
+    .contact-info-list li {
+        margin-bottom: 12px;
+        font-size: 14.5px !important;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        line-height: 1.5;
+    }
+
+    .contact-info-list .icon {
+        font-size: 18px;
+        color: #8a4822;
+        flex-shrink: 0;
+    }
+
+    .contact-info-list a {
+        color: #6e3b1e;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    .schedule-table-box {
+        background: #faf6f0;
+        border: 1px solid #e3d7c8;
+        border-radius: 6px;
+        padding: 12px 15px;
+        margin-top: 10px;
+    }
+
+    .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .schedule-table tr {
+        border-bottom: 1px dashed #d3c3b2;
+    }
+
+    .schedule-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .schedule-table td {
+        padding: 6px 2px;
+        font-size: 13px !important;
+        font-weight: 600;
+        color: #2d3748;
+        text-align: center;
+    }
+
+    .schedule-day {
+        width: 26%;
+        font-size: 13.5px !important;
+        font-weight: bold;
+        color: #6e3b1e !important;
+        border-right: 2px solid #8a4822;
+        text-align: left !important;
+    }
+
+    .schedule-time {
+        width: 34%;
+    }
+
+    .schedule-divider {
+        width: 6%;
+        color: #a0aed0;
+        font-weight: normal;
+    }
+
+    .rest-tag {
+        background-color: #c53030;
+        color: #ffffff;
+        font-size: 11.5px !important;
+        padding: 2px 8px;
+        border-radius: 10px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .map-wrapper {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #e2d7cb;
+        box-shadow: 0 4px 15px rgba(110, 59, 30, 0.05);
+    }
+
+    .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        border: 0;
+    }
+
+    /* 9. 好轉個案卡片 */
+    .case-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .case-card {
+        background: #ffffff;
+        border: 1px solid #e3d7c8;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(110, 59, 30, 0.05);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .case-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(110, 59, 30, 0.12);
+        border-color: #8a4822;
+    }
+
+    .case-video-box {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        background: #000;
+    }
+
+    .case-video-box iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .case-card-body {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .case-tag {
+        align-self: flex-start;
+        background-color: #f4ece3;
+        color: #6e3b1e;
+        font-size: 12px !important;
+        font-weight: bold;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    .case-title {
+        font-size: 15.5px !important;
+        font-weight: bold;
+        color: #382d26;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .case-desc-list {
+        font-size: 13px !important;
+        color: #615349;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        flex-grow: 1;
+    }
+
+    .case-desc-list p {
+        margin: 4px 0;
+    }
+
+    .case-footer {
+        border-top: 1px solid #f0e5d8;
+        padding-top: 10px;
+        font-size: 12px !important;
+        color: #8c7b6e;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* 10. X-Ray 圖片對比專用卡片 */
+    .case-xray-card {
+        background: #ffffff;
+        border: 1px solid #e3d7c8;
+        border-radius: 8px;
+        padding: 22px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 12px rgba(110, 59, 30, 0.05);
+        position: relative;
+        z-index: 2;
+    }
+
+    .case-number-badge {
+        font-size: 20px !important;
+        font-weight: 800;
+        color: #8a4822;
+        margin-bottom: 5px;
+    }
+
+    .case-xray-intro {
+        font-size: 14px !important;
+        color: #4a3e3d;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f0e5d8;
+    }
+
+    .xray-comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: center;
+    }
+
+    .xray-item img {
+        width: 100%;
+        max-height: 220px;
+        object-fit: contain;
+        background-color: #111111;
+        border-radius: 6px;
+        border: 1px solid #d3c3b2;
+        margin-bottom: 10px;
+    }
+
+    .xray-item .stage-title {
+        font-size: 14.5px !important;
+        font-weight: bold;
+        color: #6e3b1e;
+        margin-bottom: 4px;
+    }
+
+    .xray-item .stage-desc {
+        font-size: 12.5px !important;
+        color: #615349;
+        line-height: 1.5;
+    }
+
+    /* 11. 返回按鈕 */
+    .earth-back-btn {
+        display: block;
+        width: 160px;
+        margin: 40px auto 10px auto;
+        padding: 10px 0;
+        background-color: #6e3b1e !important;
+        color: #ffffff !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 25px;
+        font-size: 14px !important;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+    }
+
+    .earth-back-btn:hover {
+        background-color: #522a13 !important;
+    }
+
+    /* RWD 手機端響應式調整 */
+    @media (max-width: 860px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        /* 手機版：地圖在前，時間表卡片在後 */
+        .map-wrapper {
+            order: 1;
+        }
+
+        .contact-card {
+            order: 2;
+        }
+
+        .case-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .xray-comparison-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .earth-page-container {
+            padding: 20px 15px;
+            padding-top: 70px;
+        }
+
+        .earth-title {
+            font-size: 22px !important;
+        }
+
+        .map-wrapper,
+        .map-wrapper iframe {
+            height: 300px;
+            min-height: 300px;
+        }
+
+        .earth-page-container::before {
+            background-size: 90vw auto;
+            top: 150px;
+        }
+
+        /* 手機版右上角按鈕微調 */
+        .top-fixed-actions {
+            top: 15px !important;
+            right: 15px !important;
+            padding: 4px 6px !important;
+        }
+
+        .earth-quick-btn,
+        .earth-home-btn {
+            padding: 5px 9px;
+            font-size: 11px !important;
+        }
+    }
+</style>
+
+<!-- 土頁面內容 -->
+<div class="earth-page-container">
+    <!-- 頁面右上角固定導航按鈕群組：一鍵看個案 + 一鍵返回首頁 -->
+    <div class="top-fixed-actions">
+        <a href="#success-cases" class="earth-quick-btn">💬 好轉個案</a>
+        <a href="https://www.hkwholeness.com/" class="earth-home-btn">🏠 返回首頁</a>
+    </div>
+
+    <h1 class="earth-title">聯絡我們與好轉見證</h1>
+    <div class="earth-subtitle">土之厚德 ｜ 承載萬物・扎根落實・真實見證</div>
+
+    <!-- 引言 -->
+    <div class="earth-intro-text"></div>
+
+    <!-- 第一部分：聯絡我們 -->
+    <h4 class="earth-h4-title">診所地址與聯絡資訊</h4>
+    <div class="contact-grid">
+        <!-- 地圖內嵌 (電腦版在右，透過 CSS 讓手機版顯示在最前) -->
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.490715978716!2d114.1441551!3d22.3375561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404075501761eb7%3A0x55ad668dd7084f54!2z44CSNDg5LTQ5MSDpnZLmsIHpgZM!5e0!3m2!1szh-TW!2shk!4v1710000000000!5m2!1szh-TW!2shk"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+        </div>
+
+        <!-- 聯絡資料與時間表卡片 (電腦版在左，手機版在地圖下方) -->
+        <div class="contact-card">
+            <ul class="contact-info-list">
+                <li>
+                    <span class="icon">📍</span>
+                    <div>
+                        <strong>診所地址：</strong><br />
+                        荔枝角長沙灣青山道 489-491 號 香港工業中心 A 座 904 室<br />
+                        <span style="font-size: 13px; color: #6e3b1e">(荔枝角地鐵站 C 出口)</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">📞</span>
+                    <div>
+                        <strong>聯絡電話 / WhatsApp：</strong><br />
+                        <a href="https://wa.me/85264999199" target="_blank">+852 6499 9199</a>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">✉️</span>
+                    <div><strong>電郵：</strong>hkwholeness@gmail.com</div>
+                </li>
+            </ul>
+
+            <!-- 工作時間表 -->
+            <div>
+                <strong style="font-size: 15px; color: #332b27">🕒 工作時間：</strong>
+                <div class="schedule-table-box">
+                    <table class="schedule-table">
+                        <tr>
+                            <td class="schedule-day">星期一</td>
+                            <td class="schedule-time">11:00 – 14:00</td>
+                            <td class="schedule-divider">|</td>
+                            <td class="schedule-time">16:00 – 20:30</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">星期二</td>
+                            <td class="schedule-time">11:00 – 14:00</td>
+                            <td class="schedule-divider">|</td>
+                            <td class="schedule-time">16:00 – 20:30</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">星期三</td>
+                            <td colspan="3"><span class="rest-tag">休息</span></td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">星期四</td>
+                            <td class="schedule-time">11:00 – 14:00</td>
+                            <td class="schedule-divider">|</td>
+                            <td class="schedule-time">16:00 – 20:30</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">星期五</td>
+                            <td class="schedule-time"><span class="rest-tag">休息</span></td>
+                            <td class="schedule-divider">|</td>
+                            <td class="schedule-time">16:00 – 20:30</td>
+                        </tr>
+                        <tr>
+                            <td class="schedule-day">星期六</td>
+                            <td class="schedule-time">11:00 – 14:00</td>
+                            <td class="schedule-divider">|</td>
+                            <td class="schedule-time">16:00 – 18:30</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="font-size: 13.5px; color: #c53030; font-weight: bold; margin-top: 8px">📌 星期日及公眾假期（紅日）休息</div>
+                <i style="font-size: 12.5px; color: #8c7b6e; margin-top: 4px; display: block">（敬請提前預約，不設即時門診）</i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二部分：好轉個案分享 (遙距治癒與影音個案) -->
+    <h4 id="success-cases" class="earth-h4-title">遙距治癒與影音個案分享</h4>
+    <div class="case-grid">
+        <!-- 個案 1 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/brTqwU4H5bA" title="港人日本旅遊頸痛" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">遙距治癒</div>
+                <div class="case-title">港人日本旅遊，頸痛到嘔</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>因頸椎錯位，阻礙供血，導致痛到嘔</p>
+                    <p><strong>客戶姓名：</strong>鄭小姐大嫂</p>
+                    <p><strong>職業：</strong>文員</p>
+                </div>
+                <div class="case-footer">
+                    <span>治療日期：31/3/2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 個案 2 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/87xUd6tQlCc" title="因服藥過量進院" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">緊急調理</div>
+                <div class="case-title">因服藥過量進院，導致走路不穩</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>因過度服藥，導致發聲問題及走路不穩</p>
+                    <p><strong>客戶姓名：</strong>徐小姐媽媽</p>
+                    <p><strong>職業：</strong>家庭主婦</p>
+                </div>
+                <div class="case-footer">
+                    <span>治療日期：7/7/2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 個案 3 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/3NsdOjRUpnc" title="英國病人中風" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">海外遙距</div>
+                <div class="case-title">英國心臟病手術後中風，失去意識</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>英國病人手術後失去意識，甦醒後失去自主活動能力</p>
+                    <p><strong>客戶姓名：</strong>Mable 女婿</p>
+                </div>
+                <div class="case-footer">
+                    <span>治療日期：20/8/2025</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第三部分：脊椎矯正個案分享 -->
+    <h4 class="earth-h4-title">脊椎矯正個案分享</h4>
+    <div class="case-grid">
+        <!-- 影片 1 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/yu7Icpheav0" title="7旬女士飽受腳痛困擾" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">脊椎矯正</div>
+                <div class="case-title">7旬女士飽受腳痛困擾，行路需用拐杖</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>中西醫治療無果，行路不便，神經線痛</p>
+                    <p><strong>改善狀況：</strong>氣針治療數次後，已可不用拐杖自主行走</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 影片 2 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/iVTAxLrNqKA" title="老人跌親後撞到後尾枕" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">散瘀調理</div>
+                <div class="case-title">老人跌親後撞到後尾枕，氣針散瘀</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>跌倒撞傷頭部後尾枕，腫痛不適</p>
+                    <p><strong>改善狀況：</strong>經數次氣針治療促進血氣流通，快速散瘀止痛</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 影片 3 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/aj1NMG4r4Xs" title="4歲女童跌親後無法平衡" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">兒童復位</div>
+                <div class="case-title">4歲女童跌親後走路不穩、無法平衡</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>跌倒後無法正常行走，容易跌倒</p>
+                    <p><strong>改善狀況：</strong>一次治療即見效，數次療程後完全恢復平衡</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 影片 4 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/5iE55DCfjTI" title="星級歌唱學府創辦人體驗" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">名師見證</div>
+                <div class="case-title">星級歌唱學府創辦人用氣針治療2次即刻見效</div>
+                <div class="case-desc-list">
+                    <p><strong>相關病症：</strong>多年舊患不適</p>
+                    <p><strong>改善狀況：</strong>體驗氣流帶動，放鬆頭頸，對教學與講座發揮有極大幫助</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 影片 5 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/WY5ufoLiyMQ" title="好轉個案 Mr Yu" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">真實個案</div>
+                <div class="case-title">好轉個案分享 — Mr Yu</div>
+                <div class="case-desc-list">
+                    <p><strong>經驗分享：</strong>親身體驗全治護脊療程後的顯著改善歷程</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 影片 6 -->
+        <div class="case-card">
+            <div class="case-video-box">
+                <iframe src="https://www.youtube.com/embed/s9UlHLoRwl8" title="好轉個案分享" allowfullscreen></iframe>
+            </div>
+            <div class="case-card-body">
+                <div class="case-tag">脊椎矯正</div>
+                <div class="case-title">好轉個案分享 — 脊椎矯正與調理歷程</div>
+                <div class="case-desc-list">
+                    <p><strong>經驗分享：</strong>親身體驗脊椎矯正療程，改善長期體態與疼痛問題</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第四部分：X-Ray 脊椎矯正前後對比 -->
+    <h4 class="earth-h4-title">脊椎矯正影像對比記錄</h4>
+
+    <div class="case-xray-card">
+        <div class="case-number-badge">Case 1</div>
+        <div class="case-xray-intro"><strong>陳小姐 (45歲)</strong> — 頸部活動不自如，特別是向後仰時最辛苦，容易頭痛，每次維持數日。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/38-1.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">頸椎1至7節均呈現過直，頸椎下段出現雙重錯位，肌肉處於緊張狀態。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/39.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">頸椎出現初步改善，頸椎弧度與頸椎下段錯位完全消失，患者頭痛亦消失，頸椎隨意作後仰活動。</div>
+            </div>
+
+            <!-- 階段 3 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/40.jpg" alt="第二療程後" />
+                <div class="stage-title">第二療程後：</div>
+                <div class="stage-desc">頸椎弧度已基本恢復正常狀態，患者再不感到頸部不適，並開始接受腰椎的治療。(患者初期是同時有頸椎及腰椎問題)。</div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 2</div>
+        <div class="case-xray-intro"><strong>黃女士(41歲)</strong> — 起床後經常出現雙手麻痺無力情況，經過一般跌打敷藥多次後，依然無效。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/41.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">頸部喪失先天弧度。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/42.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">經16次治療後，頸部明顯恢復先天弧度，雖然仍未完全康復，但手痺的情況已消失。</div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 3</div>
+        <div class="case-xray-intro"><strong>羅小姐(27歲)</strong> 長期頭痛影響睡眠，頸部的肌肉僵硬，引致羅小姐經常疲倦不堪。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/43.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">頸椎第1節跟頭顱的連接位出現左右不平衡，右邊正常，左邊嚴重縮窄，有骨關節粘合傾向，同時第2節頸椎出現右轉錯位。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/44.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">在治療9次後，羅小姐關節問題完全改善，頭痛及失眠的情況明顯減輕。但是因為仍然有其他關節問題，導致肌肉僵硬，所以仍需作進一步治療。</div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 4</div>
+        <div class="case-xray-intro"><strong>鄺小朋友(8歲)</strong> 因頭部不適，影響讀書集中力，並且容易疲倦及作病，觸診時頸部有嚴重壓痛，不能受壓。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/45.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">頸椎變直，加上頸椎上段第2及第3節出現前後滑脫，極可能迫壓到脊柱神經，若情況了發展下去，可能引致全身癱瘓。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/46.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">幸好患者年幼，筋骨柔軟，治療進度理想，頸椎恢復基本弧度，並且頸椎的前後滑脫亦有改善，這改變在西醫角度是全無可能。</div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 5</div>
+        <div class="case-xray-intro"><strong>吳小姐( 41歲)</strong> 因長時間的文書工作關係，頸及兩邊肩膊劇痛, 頸部後仰時特別辛苦。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/47.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">頸椎呈現僵直，中段頸椎呈反弧度，頸及肩膀肌肉十分僵硬。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/48.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">頸椎弧度明顯改善，反弧部位正常化，頸肩肌肉較柔軟，患處痛楚大幅減輕。</div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 6</div>
+        <div class="case-xray-intro"><strong>陳小姐( 31歲)</strong> 主訴頸痛及肌肉僵硬，但患者對按壓痛楚的神經感覺遲鈍。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/49.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">雖然主訴是頸部，但胸椎有較嚴重右側彎及胸椎過正，直接導致頸椎異常，引致頸痛。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/50.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">中上段胸椎側彎明顯改善，頸痛大幅減少, 患者對按壓重新有痛楚感，神經重新活躍，但仍雖接受鞏固胸椎治療。</div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 7</div>
+        <div class="case-xray-intro"><strong>Brandon(28歲)</strong> 主訴頸肩及上背疼痛僵硬，曾在美國接受多年脊椎神經科醫生治療，但效果並不顯著。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/51.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">右邊頸椎1及2關節間隙明顯收窄及軟組織黏連，導致頸動脈供血致腦部受阻及頸部活動幅度下降，並且兩肩肌肉僵硬。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/52.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">
+                    在接受一個星期的密集治療後(因患者只短暫停留香港一個星期)，頸椎1及2關節間隙明顯增加，深層軟組織黏連已鬆開，活動幅度及肌肉僵硬大幅改善。患者在一年後覆診時仍然保持理想狀態。
+                </div>
+            </div>
+        </div>
+
+        <div class="case-number-badge">Case 8</div>
+        <div class="case-xray-intro"><strong>陳女士(34歲)</strong> 體格強壯，但患有腰痛多年，並於一次運動創傷後，整個身體向右傾斜，以致走路失衡，並產生反覆劇痛。</div>
+
+        <div class="xray-comparison-grid">
+            <!-- 階段 1 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/53.jpg" alt="治療前" />
+                <div class="stage-title">治療前：</div>
+                <div class="stage-desc">X-Ray 診斷腰椎呈現中度至重度的脊椎側彎，盤骨向前旋轉錯位，嚴重影響走路能力。</div>
+            </div>
+
+            <!-- 階段 2 -->
+            <div class="xray-item">
+                <img src="/wp-content/uploads/2014/10/54.jpg" alt="治療後" />
+                <div class="stage-title">治療後：</div>
+                <div class="stage-desc">經過8次治療後，脊柱側彎的情況有明顯改善，盤骨恢復平衡的位置，基本上可以判斷為完全康復，但仍建議每月1次的鞏固治療。</div>
+            </div>
+        </div>
+
+        <a href="https://www.hkwholeness.com/" class="earth-back-btn">返回網站首頁</a>
+    </div>
+</div>

@@ -53,7 +53,7 @@ export const FIVE_ELEMENTS: FiveElement[] = [
     {
         id: "earth",
         angle: 144,
-        href: "http://www.hkwholeness.com/土-真實見證・聯絡我們/",
+        href: "/contact",
         label: "土",
         darkSrc: EarthImage,
         activeSrc: EarthActiveImage,
@@ -61,7 +61,7 @@ export const FIVE_ELEMENTS: FiveElement[] = [
     {
         id: "metal",
         angle: 216,
-        href: "http://www.hkwholeness.com/金-收費標準・專業認證/",
+        href: "/pricing",
         label: "金",
         darkSrc: MetalImage,
         activeSrc: MetalActiveImage,
@@ -69,7 +69,7 @@ export const FIVE_ELEMENTS: FiveElement[] = [
     {
         id: "water",
         angle: 288,
-        href: "http://www.hkwholeness.com/水-治療教學・慈善施醫/",
+        href: "/charity",
         label: "水",
         darkSrc: WaterImage,
         activeSrc: WaterActiveImage,

@@ -1,0 +1,528 @@
+<style>
+    /* 1. 頂部 Menu Bar 優化 */
+    #Header,
+    .site-header,
+    #Top_bar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #eae6df !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    }
+    #Top_bar .menu > li > a,
+    .main-navigation a {
+        color: #222222 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 2. 全頁背景：清亮金宣紙底色（#F8F7F4） */
+    #Subheader,
+    .ast-title-bar-wrap,
+    #Content,
+    .content_wrapper,
+    .site-content,
+    #main {
+        background-color: #f8f7f4 !important;
+        background-image: none !important;
+        border: none !important;
+    }
+
+    /* 3. 金頁面滿版容器 */
+    .metal-page-container {
+        width: 100%;
+        max-width: 1200px !important;
+        margin: 0 auto;
+        padding: 30px 40px;
+        box-sizing: border-box;
+        font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        color: #2c2a29;
+        line-height: 1.85;
+        background-color: #f8f7f4 !important;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    /* 4. 水墨「金」字浮水印 */
+    .metal-page-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://www.hkwholeness.com/wp-content/uploads/2026/06/金Final.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center 60%;
+        background-size: auto 85vh;
+        -webkit-mask-image: radial-gradient(ellipse at center 60%, black 35%, transparent 80%);
+        mask-image: radial-gradient(ellipse at center 60%, black 35%, transparent 80%);
+        filter: contrast(130%) brightness(105%) sepia(100%) hue-rotate(15deg) saturate(180%);
+        opacity: 0.12 !important;
+        mix-blend-mode: multiply !important;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* 5. 頂部標題區包裝（用於右上方按鈕定位） */
+    .metal-header-wrapper {
+        position: relative;
+        z-index: 2;
+        margin-top: 10px;
+        margin-bottom: 35px;
+        padding-top: 10px;
+    }
+
+    /* 6. 右上角返回首頁按鈕：符合金頁面的金褐冷調質感 */
+    .metal-top-back-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        color: #8c6d23 !important;
+        border: 1px solid rgba(140, 109, 35, 0.25) !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 20px;
+        font-size: 13.5px;
+        font-weight: bold;
+        backdrop-filter: blur(3px);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+    .metal-top-back-btn:hover {
+        background-color: #8c6d23 !important;
+        color: #ffffff !important;
+        border-color: #8c6d23 !important;
+    }
+
+    /* 7. 大標題與副標題 */
+    .metal-title {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+        color: #8c6d23 !important;
+        margin: 0 0 8px 0;
+        letter-spacing: 2px;
+    }
+    .metal-subtitle {
+        text-align: center;
+        font-size: 15px;
+        color: #6e655f !important;
+        margin: 0;
+    }
+
+    /* 8. 引言文字區塊 */
+    .metal-intro-text {
+        font-size: 16.5px;
+        text-align: justify;
+        margin-bottom: 35px;
+        color: #33302e !important;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 9. 單卡片收費區域佈局 */
+    .pricing-single-wrap {
+        width: 100%;
+        margin: 0 auto 45px auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .price-card {
+        background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), url("https://www.hkwholeness.com/wp-content/uploads/2026/09/插圖1-診所價目表：全面照顧計劃4.png") !important;
+        background-size: 38% auto !important; /* 調整電腦版圖片大小適中 */
+        background-position: right 35px top -50px !important; /* 電腦版固定靠右上方 */
+        background-repeat: no-repeat !important;
+        backdrop-filter: blur(3px);
+        border: 1px solid #dcd3c5 !important;
+        border-top: 5px solid #a88434 !important;
+        border-radius: 8px;
+        padding: 28px;
+        box-shadow: 0 4px 15px rgba(140, 109, 35, 0.08);
+    }
+
+    .price-card-header {
+        text-align: left;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed #e0d7c8;
+        max-width: 55%;
+    }
+    .price-card-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #8c6d23;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+    .price-card-target {
+        font-size: 14.5px;
+        color: #6e6259;
+        font-weight: 500;
+    }
+
+    /* 10. 價目表格樣式 */
+    .price-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid #e6dec3;
+        backdrop-filter: blur(2px);
+    }
+    .price-table th {
+        background-color: #8c6d23;
+        color: #ffffff;
+        padding: 10px 12px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .price-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #efeae1;
+        font-size: 14.5px;
+        text-align: center;
+        color: #332e2b;
+    }
+    .price-table tr:last-child td {
+        border-bottom: none;
+    }
+    .price-table .col-item {
+        width: 28%;
+        font-weight: bold;
+    }
+    .price-table .col-fee {
+        width: 28%;
+        font-weight: bold;
+        color: #a82e2e;
+    }
+    .price-table .col-note {
+        width: 44%;
+        text-align: left;
+        font-size: 13.5px;
+        color: #554e4a;
+    }
+
+    /* 11. 證書與專業結構區塊 */
+    .metal-h4-title {
+        font-size: 21px;
+        color: #8c6d23 !important;
+        border-left: 4px solid #b8860b !important;
+        padding-left: 12px;
+        margin-top: 45px;
+        margin-bottom: 22px;
+        font-weight: bold;
+        position: relative;
+        z-index: 2;
+    }
+
+    .certificate-box {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(3px);
+        border-radius: 8px;
+        padding: 22px 28px;
+        border: 1px solid rgba(200, 180, 140, 0.4) !important;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 30px;
+    }
+
+    .certificate-box ul.certificate-list,
+    ul.certificate-list {
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-left: 0 !important;
+        color: #332e2b;
+        font-size: 15.5px;
+        line-height: 2.2;
+        list-style: none !important;
+        list-style-type: none !important;
+    }
+
+    .certificate-box ul.certificate-list li,
+    ul.certificate-list li {
+        list-style: none !important;
+        list-style-type: none !important;
+        position: relative;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        margin-bottom: 6px;
+    }
+
+    .certificate-box ul.certificate-list li::before {
+        content: none !important;
+    }
+
+    .cert-num {
+        color: #8c6d23;
+        font-weight: 700;
+        margin-right: 4px;
+    }
+
+    .cert-main-title {
+        font-weight: 700;
+        color: #222222;
+    }
+
+    .cert-reg-code {
+        color: #8c6d23;
+        font-weight: 600;
+    }
+
+    /* 證書畫廊：3 個一排 */
+    .certificate-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px dashed #dcd3c5;
+    }
+
+    .cert-item {
+        background: #ffffff;
+        border: 1px solid #e2d9c8;
+        border-radius: 6px;
+        padding: 10px;
+        box-shadow: 0 4px 12px rgba(140, 109, 35, 0.08);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cert-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(140, 109, 35, 0.18);
+        border-color: #b8860b;
+    }
+
+    .cert-img-wrapper {
+        width: 100%;
+        height: 210px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fafafa;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid #f0ebe1;
+    }
+
+    .cert-img-wrapper img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .cert-label {
+        font-size: 14px;
+        color: #332e2b;
+        font-weight: bold;
+        margin-top: 10px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .cert-label-code {
+        display: block;
+        font-size: 12px;
+        color: #8c6d23;
+        font-weight: 600;
+        margin-top: 2px;
+    }
+
+    /* 12. 底部返回按鈕 */
+    .metal-back-btn {
+        display: block;
+        width: 170px;
+        margin: 40px auto 10px auto;
+        padding: 12px 0;
+        background-color: #8c6d23 !important;
+        color: #ffffff !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 25px;
+        font-size: 14.5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+    }
+    .metal-back-btn:hover {
+        background-color: #6e5418 !important;
+    }
+
+    /* RWD 手機與平板端適應（完全保持手機版的設定不變） */
+    @media (max-width: 860px) {
+        .metal-page-container {
+            padding: 20px 15px;
+        }
+        .metal-header-wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+        .metal-top-back-btn {
+            position: static;
+            margin-bottom: 15px;
+        }
+        .metal-title {
+            font-size: 23px;
+        }
+        .price-card {
+            padding: 20px 15px;
+            background-size: 60% auto !important;
+            background-position: right 10px top 10px !important;
+        }
+        .price-card-header {
+            max-width: 100%;
+            text-align: center;
+        }
+        .price-card-title {
+            justify-content: center;
+        }
+        .certificate-gallery {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .cert-img-wrapper {
+            height: 160px;
+        }
+    }
+</style>
+
+<!-- 金頁面內容 -->
+<div class="metal-page-container">
+    <!-- 標題與右上角返回按鈕包裝區塊 -->
+    <div class="metal-header-wrapper">
+        <a href="https://www.hkwholeness.com/" class="metal-top-back-btn">🏠 返回首頁</a>
+        <h1 class="metal-title">診所服務價目表</h1>
+        <div class="metal-subtitle">金之規範 ｜ 透明收費・專業認證・結構對位</div>
+    </div>
+
+    <div class="metal-intro-text">
+        <p></p>
+    </div>
+
+    <!-- 單一方案區域：全面照顧計劃 -->
+    <div class="pricing-single-wrap">
+        <div class="price-card">
+            <div class="price-card-header">
+                <div class="price-card-title">◆ 全面照顧計劃</div>
+                <div class="price-card-target">對象：有明顯痛症，急需真正治療的人</div>
+            </div>
+
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th class="col-item">項目</th>
+                        <th class="col-fee">費用</th>
+                        <th class="col-note">備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-item">檢查費</td>
+                        <td class="col-fee">$300</td>
+                        <td class="col-note">包括：目測及觸診</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">X-Ray 照片</td>
+                        <td class="col-fee">$380</td>
+                        <td class="col-note">上半身 / 下半身</td>
+                    </tr>
+                    <tr>
+                        <td class="col-item">氣針療程</td>
+                        <td class="col-fee">$1,000<span style="font-size: 12px; color: #666">/次</span></td>
+                        <td class="col-note">每次治療 9 針</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 專業認證與資歷 -->
+    <h4 class="metal-h4-title">專業資歷與權威認證</h4>
+    <div class="certificate-box">
+        <ul class="certificate-list">
+            <li>
+                <span class="cert-num">[1]</span> <span class="cert-reg-code">(Nutrition Society UK: 00802894)</span> <span class="cert-main-title">英國營養學碩士</span> ｜ The University of Sheffield
+                — Master of Medical Science in Human Nutrition
+            </li>
+            <li><span class="cert-num">[2]</span> <span class="cert-main-title">食物及營養科學學士</span> ｜ South Bank University London — Bachelor of Science</li>
+            <li>
+                <span class="cert-num">[3]</span> <span class="cert-reg-code">(Reg. No: 1269, DNM)</span> <span class="cert-main-title">世界自然療法醫生協會執業委員</span> ｜ World Organization of
+                Natural Medicine — Doctor of Natural Medicine
+            </li>
+            <li><span class="cert-num">[4]</span> <span class="cert-main-title">中醫醫學博士(華陀中醫學院)</span> ｜ International Institute of Huatuo Traditional Chinese Medicine</li>
+            <li><span class="cert-num">[5]</span> <span class="cert-main-title">中醫物理治療文憑</span> ｜ 北京中醫藥大學</li>
+            <li><span class="cert-num">[6]</span> <span class="cert-main-title">國家認可高級按摩師</span> ｜ 國家勞動局</li>
+            <li><span class="cert-num">[7]</span> <span class="cert-main-title">香港推拿理療專業人員總會</span> ｜ 永久會員</li>
+        </ul>
+
+        <!-- 證書畫廊 -->
+        <div class="certificate-gallery">
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img src="https://www.hkwholeness.com/wp-content/uploads/2014/10/20.jpg" alt="[1] 英國營養學碩士" title="[1] 英國營養學碩士" />
+                </div>
+                <div class="cert-label">
+                    [1] 英國營養學碩士
+                    <span class="cert-label-code">(UK Reg: 00802894)</span>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img src="https://www.hkwholeness.com/wp-content/uploads/2014/10/21.jpg" alt="[2] 食物及營養科學學士" title="[2] 食物及營養科學學士" />
+                </div>
+                <div class="cert-label">[2] 食物及營養科學學士</div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img src="https://www.hkwholeness.com/wp-content/uploads/2014/10/22.jpg" alt="[3] 世界自然療法醫生協會執業委員" title="[3] 世界自然療法醫生協會執業委員" />
+                </div>
+                <div class="cert-label">
+                    [3] 世界自然療法醫生協會
+                    <span class="cert-label-code">(Reg. No: 1269, DNM)</span>
+                </div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img src="http://www.hkwholeness.com/wp-content/uploads/2014/10/SIGN-BACK-FORM-1.-1.jpg" alt="[4] 中醫醫學博士(華陀中醫學院)" title="[4] 中醫醫學博士(華陀中醫學院)" />
+                </div>
+                <div class="cert-label">[4] 中醫醫學博士(華陀中醫學院)</div>
+            </div>
+
+            <div class="cert-item">
+                <div class="cert-img-wrapper">
+                    <img
+                        src="https://www.hkwholeness.com/wp-content/uploads/2026/07/香港推拿理療專業人員總會.jpg"
+                        alt="[5] 香港推拿理療專業人員總會永久會員"
+                        title="[5] 香港推拿理療專業人員總會永久會員"
+                    />
+                </div>
+                <div class="cert-label">[5] 香港推拿理療專業人員總會</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 原先底部的返回按鈕 -->
+    <a href="https://www.hkwholeness.com/" class="metal-back-btn">返回網站首頁</a>
+</div>
