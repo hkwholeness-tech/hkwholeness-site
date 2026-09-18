@@ -28,6 +28,16 @@ pnpm lint:tw      # Tailwind class 正規化檢查（有改 className 字串才�
 
 `.prettierrc`：4 空格、`printWidth` 200、`trailingComma: es5`、`bracketSpacing: false`、`arrowParens: avoid`。
 
+## 完成任務後
+
+收工前檢查文件有無過時，**同一改動**內更新：
+
+- `README.md`：專案概覽、指令、目錄結構、技術棧。
+- `SPEC.md`：產品行為、頁面內容、文案、SEO。
+- `AGENTS.md`：寫碼規範、約束、各清單。
+
+改動觸及對外行為、頁面、路由、資源或規範就要更新；純內部重構、無可見影響可略過。唔肯定就問。
+
 ## 目錄
 
 ```
