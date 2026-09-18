@@ -90,12 +90,13 @@
 
 **背景音樂**（`useBackgroundMusic` + `MusicToggleButton`）
 
-- 不自動播放；亦不在 `document` 的 `click` / `touchstart` 解鎖後播放。
-- 只由「聆聽」按鈕觸發播放：桌面 `#musicToggleBtn`、手機 `#mobileMusicToggleBtn`，以 `data-playing` 反映狀態。
+- 頁面載入嘗試自動播放。
+- 被瀏覽器攔截時，於 `document` 註冊一次性 `click` / `touchstart`：頁面任意位置第一次點擊或觸控即解鎖並播放。
+- 模組層級 `hasAutoPlayed` 確保每個 session 只自動／解鎖播放一次。
+- 「聆聽」按鈕（桌面 `#musicToggleBtn`、手機 `#mobileMusicToggleBtn`，`data-playing` 反映狀態）以 `toggle` 控制播放／暫停。
 - `<audio>`（`Home/index.tsx` 的 `music.mp3`）無 `loop`：每輪只播一次。
 - 播完觸發 `ended`，將 `isPlaying` 設為 `false`，聆聽按鈕回到 idle。
 - 再次 `play()` 時若 `audio.ended`，先將 `currentTime` 歸零再播。
-- `toggle` 控制播放／暫停（未結束前可暫停後續播）。
 - 點擊任一元素導航前 `fadeOut(1000ms)` 淡出；離開首頁時 pause。內容頁（如 `/theory`）沒有音訊。
 - 播放時重啟歌詞動畫（雙行歌詞）。
 

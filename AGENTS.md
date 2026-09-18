@@ -147,8 +147,9 @@ SEO 資料只來源 `src/seo/routes.json`。正式網域用 `VITE_SITE_URL` 覆�
 
 `useBackgroundMusic` + `MusicToggleButton`：
 
-- **不要自動播放**，也不要在 `document` 的 `click` / `touchstart` 解鎖後播放。
-- 只可以由「聆聽」按鈕 `toggle`（`#musicToggleBtn` / `#mobileMusicToggleBtn`）。
+- 頁面載入嘗試自動播放；失敗則在 `document` 的 `click` / `touchstart` 解鎖後播放（click anywhere）。不要改成只准「聆聽」才播，除非明確要求。
+- `hasAutoPlayed` 每個 session 只自動／解鎖一次。
+- 「聆聽」按鈕（`#musicToggleBtn` / `#mobileMusicToggleBtn`）用 `toggle` 暫停／續播。
 - `<audio>` **不要加 `loop`**。播完 `ended` 要將 `isPlaying` 設 `false`，按鈕回到 idle。
 - 再播時若 `audio.ended`，先 `currentTime = 0`。
 - 點擊五行元素離開前 `fadeOut(1000)`；unmount 要 pause。內容頁沒有音訊。
