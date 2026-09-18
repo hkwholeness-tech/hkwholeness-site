@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# 全治護脊 hkwholeness-site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+全治護脊（WE Acupuncture）官方網站。以五行「木、火、土、金、水」為主題，將治療理論、心法、聯絡見證、收費認證與慈善教學五個內容頁，串連成一個可旋轉互動的首頁轉盤體驗。
 
-Currently, two official plugins are available:
+網站為 **SPA + 靜態預渲染（SSR prerender）**：瀏覽時由 React Router 驅動，建置時逐頁輸出完整 HTML 與 SEO metadata，兼顧互動與搜尋引擎收錄。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 網站結構
 
-## React Compiler
+| 五行 | 路徑       | 頁面     | 內容                                           |
+| ---- | ---------- | -------- | ---------------------------------------------- |
+| —    | `/`        | 首頁     | 五行轉盤、背景音樂、歌詞動畫、預約資訊         |
+| 木   | `/theory`  | 治療理論 | 全治氣針治療理論、頻率治療手法                 |
+| 火   | `/spirit`  | 心法     | 善用五行破解人生逆境大論                       |
+| 土   | `/contact` | 聯絡見證 | 地址地圖、工作時間、遙距／脊椎個案、X-Ray 對比 |
+| 金   | `/pricing` | 收費認證 | 服務價目表、專業資歷、證書燈箱                 |
+| 水   | `/charity` | 慈善教學 | 工聯會／明愛教學、街頭義診、天醫濟世計畫       |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 技術棧
 
-## Expanding the ESLint configuration
+- **React 19** + **TypeScript**
+- **Vite 8**（`@vitejs/plugin-react`）
+- **React Router 8**（`createBrowserRouter` + SSR `createStaticHandler`）
+- **Tailwind CSS 4**（`@tailwindcss/vite`）＋ 各頁獨立 Less-free CSS 檔（`index.css`）
+- **react-icons**、**classnames**
+- 套件管理：**pnpm**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 快速開始
 
-```js
-export default defineConfig([
-    globalIgnores(["dist"]),
-    {
-        files: ["**/*.{ts,tsx}"],
-        extends: [
-            // Other configs...
+環境需求：Node.js 20+、pnpm。
 
-            // Remove tseslint.configs.recommended and replace with this
-            tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            tseslint.configs.stylisticTypeChecked,
-
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
+```bash
+pnpm install
+pnpm dev          # 啟動開發伺服器
+pnpm build        # 型別檢查 + 前端建置 + SSR 建置 + 預渲染
+pnpm preview      # 預覽 dist 產物
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+| 指令               | 說明                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| `pnpm dev`         | 啟動 Vite 開發伺服器（HMR）                                                                      |
+| `pnpm build`       | `tsc -b` → `vite build` → `vite build --ssr src/entry-server.tsx` → `node scripts/prerender.mjs` |
+| `pnpm preview`     | 預覽建置後的 `dist/`                                                                             |
+| `pnpm lint`        | ESLint 檢查                                                                                      |
+| `pnpm lint:tw`     | 檢查 Tailwind class 是否可正規化（不通過會 exit 1）                                              |
+| `pnpm lint:tw:fix` | 自動修正 Tailwind class                                                                          |
+| `pnpm format`      | Prettier 格式化                                                                                  |
 
-export default defineConfig([
-    globalIgnores(["dist"]),
-    {
-        files: ["**/*.{ts,tsx}"],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs["recommended-typescript"],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
+## 建置與 SEO
+
+`pnpm build` 除了產出前端 bundle，亦會：
+
+1. 用 `src/entry-server.tsx` 將每個路由渲染成 HTML。
+2. 由 `scripts/prerender.mjs` 將 `<title>`、description、keywords、canonical、Open Graph、Twitter Card 及 `MedicalClinic` JSON-LD 注入各頁 HTML。
+3. 產生 `dist/sitemap.xml` 與 `dist/robots.txt`。
+
+SEO 資料的唯一來源為 `src/seo/routes.json`（網站資料 + 每個路由的 metadata）。客戶端另由 `src/seo/Seo.tsx` 在路由切換時同步更新 `<head>`。
+
+若要自訂正式網域，設定環境變數 `VITE_SITE_URL`（會覆蓋 `routes.json` 的 `siteUrl`）。
+
+## 部署
+
+已附 `vercel.json`：Vercel 以 `pnpm build` 建置、輸出 `dist/`，並將所有非檔案請求 fallback 至 `index.html`。
+
+## 目錄結構
+
 ```
+src/
+├─ app.tsx                 # RouterProvider 進入點
+├─ main.tsx                # createRoot / hydrateRoot
+├─ router.ts / routes.ts   # 路由定義
+├─ entry-server.tsx        # SSR render
+├─ index.css               # Tailwind 入口
+├─ component/              # RootLayout、SiteLayout（NavBar / ContactWidget / MoveTopButton）
+├─ page/                   # Home / Theory / Spirit / Contact / Pricing / Charity
+│  └─ <Page>/{index.tsx, index.css, constant.ts, type.ts, component/, hook/, asset/}
+└─ seo/                    # Seo.tsx、config.ts、routes.json
+scripts/
+├─ prerender.mjs           # 逐頁預渲染 + sitemap + robots
+└─ lint-tailwind.mjs       # Tailwind class 正規化檢查
+legacy/                    # 舊版靜態 HTML（遷移參考）
+```
+
+## 開發規範
+
+- React：`React.` 前綴呼叫（如 `React.useState`）、`React.Fragment` 完整寫法、`export const Component`、component 內部用 arrow function。
+- 依 `AGENTS.md`：只跑 Type Check 與 Prettier，**不跑 ESLint**。
+- Prettier：4 空格縮排、printWidth 200、無 bracket spacing。
+
+詳細功能與技術規格見 [SPEC.md](./SPEC.md)。
