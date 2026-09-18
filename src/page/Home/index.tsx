@@ -37,7 +37,7 @@ export const HomePage = () => {
                     </div>
                 </main>
             </div>
-            <audio ref={audioRef} src={MusicAsset} preload="auto" loop />
+            <audio ref={audioRef} src={MusicAsset} preload="auto" />
         </div>
     );
 };

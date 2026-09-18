@@ -28,6 +28,9 @@ export function useBackgroundMusic() {
             return;
         }
         audio.volume = 1;
+        if (audio.ended) {
+            audio.currentTime = 0;
+        }
         try {
             await audio.play();
             setIsPlaying(true);
@@ -90,8 +93,15 @@ export function useBackgroundMusic() {
             return;
         }
 
+        const handleEnded = () => {
+            setIsPlaying(false);
+        };
+
         const unlock = async () => {
             audio.volume = 1;
+            if (audio.ended) {
+                audio.currentTime = 0;
+            }
             try {
                 await audio.play();
                 setIsPlaying(true);
@@ -102,6 +112,8 @@ export function useBackgroundMusic() {
             document.removeEventListener("click", unlock);
             document.removeEventListener("touchstart", unlock);
         };
+
+        audio.addEventListener("ended", handleEnded);
 
         if (!hasAutoPlayed) {
             hasAutoPlayed = true;
@@ -119,6 +131,7 @@ export function useBackgroundMusic() {
         }
 
         return () => {
+            audio.removeEventListener("ended", handleEnded);
             document.removeEventListener("click", unlock);
             document.removeEventListener("touchstart", unlock);
             if (fadeTimerRef.current !== null) {
