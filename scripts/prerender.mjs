@@ -29,7 +29,7 @@ function buildHead(meta) {
         `<meta name="keywords" content="${escapeHtml(meta.keywords)}" />`,
         `<meta name="robots" content="index,follow" />`,
         `<link rel="canonical" href="${canonical}" />`,
-        `<meta property="og:type" content="website" />`,
+        `<meta property="og:type" content="${meta.ogType}" />`,
         `<meta property="og:site_name" content="${escapeHtml(site.siteName)}" />`,
         `<meta property="og:locale" content="zh_HK" />`,
         `<meta property="og:title" content="${escapeHtml(meta.title)}" />`,
@@ -47,7 +47,8 @@ function buildJsonLd() {
     return JSON.stringify({
         "@context": "https://schema.org",
         "@type": "MedicalClinic",
-        name: site.siteName,
+        name: site.businessName,
+        alternateName: site.siteName,
         url: site.siteUrl,
         image: `${site.siteUrl}${site.ogImage}`,
         telephone: site.phone,

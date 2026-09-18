@@ -2,6 +2,7 @@ import routesData from "./routes.json";
 
 export interface RouteMeta {
     path: string;
+    ogType: string;
     title: string;
     description: string;
     keywords: string;
@@ -11,6 +12,7 @@ export interface RouteMeta {
 
 export interface SiteMeta {
     siteName: string;
+    businessName: string;
     siteUrl: string;
     ogImage: string;
     phone: string;

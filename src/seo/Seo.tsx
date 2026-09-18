@@ -37,7 +37,7 @@ export const Seo = () => {
         upsertMeta("name", "keywords", meta.keywords);
         upsertMeta("name", "robots", matched ? "index,follow" : "noindex,follow");
 
-        upsertMeta("property", "og:type", "website");
+        upsertMeta("property", "og:type", meta.ogType);
         upsertMeta("property", "og:site_name", SITE.siteName);
         upsertMeta("property", "og:locale", "zh_HK");
         upsertMeta("property", "og:title", meta.title);
