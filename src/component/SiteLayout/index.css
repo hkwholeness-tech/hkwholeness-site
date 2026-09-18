@@ -12,9 +12,6 @@
 }
 
 .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
     background: #ffffff;
     border-bottom: 1px solid #e5eadf;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
@@ -27,6 +24,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px 40px;
+    justify-content: center;
     align-items: center;
 }
 
@@ -37,8 +35,8 @@
 
 .site-nav__logo {
     display: block;
-    width: auto;
-    height: 64px;
+    width: 200px;
+    height: auto;
 }
 
 .move-top-btn {
@@ -183,7 +181,7 @@
     }
 
     .site-nav__logo {
-        height: 46px;
+        width: 150px;
     }
 
     .move-top-btn {

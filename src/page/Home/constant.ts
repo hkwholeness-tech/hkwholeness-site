@@ -45,7 +45,7 @@ export const FIVE_ELEMENTS: FiveElement[] = [
     {
         id: "fire",
         angle: 72,
-        href: "http://www.hkwholeness.com/火-善用五行破解人生逆境大論/",
+        href: "/spirit",
         label: "火",
         darkSrc: FireImage,
         activeSrc: FireActiveImage,

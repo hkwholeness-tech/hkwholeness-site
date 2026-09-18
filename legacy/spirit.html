@@ -1,0 +1,428 @@
+<style>
+    /* 1. 頂部 Menu Bar 優化 */
+    #Header,
+    .site-header,
+    #Top_bar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #f3e5e5 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+    }
+    #Top_bar .menu > li > a,
+    .main-navigation a {
+        color: #222222 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 2. 全頁背景設定：微暖宣紙底色（#FAF6F0），營造火之溫通與質感 */
+    #Subheader,
+    .ast-title-bar-wrap,
+    #Content,
+    .content_wrapper,
+    .site-content,
+    #main {
+        background-color: #faf6f0 !important;
+        background-image: none !important;
+        border: none !important;
+    }
+
+    /* 3. 研究所專屬頁面滿版容器 */
+    .institute-page-container {
+        width: 100%;
+        max-width: 1200px !important;
+        margin: 0 auto;
+        padding: 30px 40px;
+        box-sizing: border-box;
+        font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+        color: #2b2625;
+        line-height: 1.85;
+        background-color: #faf6f0 !important;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    /* 4. 水墨「火」字浮水印：螢幕視窗固定 + 下移微調 */
+    .institute-page-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background-image: url("https://www.hkwholeness.com/wp-content/uploads/2026/06/火-2.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center 65%;
+        background-size: auto 95vh;
+
+        -webkit-mask-image: radial-gradient(ellipse at center 65%, black 40%, transparent 82%);
+        mask-image: radial-gradient(ellipse at center 65%, black 40%, transparent 82%);
+
+        filter: contrast(135%) brightness(102%) sepia(100%) hue-rotate(-45deg) saturate(220%);
+        opacity: 0.12 !important;
+        mix-blend-mode: multiply !important;
+
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* 5. 頂部標題與右上角按鈕包裝區塊 */
+    .institute-header-wrapper {
+        position: relative;
+        z-index: 2;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding-top: 10px;
+    }
+
+    /* 6. 右上角返回首頁按鈕：符合火頁面的朱紅冷調質感 */
+    .institute-top-back-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        color: #c62828 !important;
+        border: 1px solid rgba(198, 40, 40, 0.25) !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 20px;
+        font-size: 13.5px;
+        font-weight: bold;
+        backdrop-filter: blur(3px);
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+    .institute-top-back-btn:hover {
+        background-color: #c62828 !important;
+        color: #ffffff !important;
+        border-color: #c62828 !important;
+    }
+
+    /* 7. 標題：濃郁赤紅與典雅字體 */
+    .institute-title {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+        color: #c62828 !important;
+        margin: 0 0 8px 0;
+        letter-spacing: 2px;
+    }
+
+    /* 8. 前言內文 */
+    .institute-intro-text {
+        font-size: 16.5px;
+        text-align: justify;
+        margin-bottom: 25px;
+        color: #332c2b !important;
+        position: relative;
+        z-index: 2;
+    }
+    .institute-intro-text p {
+        text-indent: 2em;
+        margin-bottom: 16px;
+    }
+
+    /* 9. H4 標題 */
+    .institute-h4-title {
+        font-size: 21px;
+        color: #b71c1c !important;
+        border-left: 4px solid #d32f2f !important;
+        padding-left: 12px;
+        margin-top: 45px;
+        margin-bottom: 22px;
+        font-weight: bold;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 10. H5 標題 */
+    .institute-h5-title {
+        font-size: 18px;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 11. 兩大根源條目樣式：半透明白底 + 溫潤邊框 */
+    .root-cause-list {
+        background: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(3px);
+        border-radius: 8px;
+        padding: 22px 28px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(229, 115, 115, 0.3) !important;
+        position: relative;
+        z-index: 2;
+    }
+    .root-cause-item {
+        margin-bottom: 15px;
+        font-size: 18.5px;
+        color: #2b2625 !important;
+        line-height: 1.8;
+    }
+    .root-cause-item:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 12. 五行流體力學動態流程圖 */
+    .five-elements-flow-chart {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(3px);
+        padding: 22px;
+        border-radius: 12px;
+        margin: 35px 0;
+        border: 1px solid rgba(210, 195, 180, 0.5) !important;
+        gap: 12px;
+        position: relative;
+        z-index: 2;
+    }
+    .flow-node {
+        padding: 9px 18px;
+        border-radius: 20px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14.5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        white-space: nowrap;
+    }
+    .flow-arrow {
+        color: #a08c7d;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* 五行節點顏色優化 */
+    .node-fire {
+        background-color: #d32f2f;
+    }
+    .node-earth {
+        background-color: #795548;
+    }
+    .node-metal {
+        background-color: #f57f17;
+        color: #fff;
+    }
+    .node-water {
+        background-color: #1976d2;
+    }
+    .node-wood {
+        background-color: #388e3c;
+    }
+
+    /* 13. 終極控局之道卡片 */
+    .control-strategy-box {
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.65) !important;
+        backdrop-filter: blur(3px);
+        border-left: 4px solid #c62828 !important;
+        border-radius: 0 6px 6px 0;
+        font-size: 18.5px;
+        color: #2b2625 !important;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* 14. 告世人書結尾 */
+    .manifesto-box {
+        background: #231e1d !important;
+        color: #f5ebe6;
+        padding: 32px 35px;
+        border-radius: 8px;
+        margin-top: 40px;
+        border-top: 4px solid #d32f2f !important;
+        text-align: justify;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 2;
+    }
+    .manifesto-box p {
+        color: #e0d4ce !important;
+        font-size: 15.5px;
+        line-height: 1.85;
+        margin-bottom: 14px;
+    }
+    .manifesto-box p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 15. 底部返回按鈕 */
+    .fire-back-btn {
+        display: block;
+        width: 160px;
+        margin: 40px auto 10px auto;
+        padding: 10px 0;
+        background-color: #c62828 !important;
+        color: #ffffff !important;
+        text-align: center;
+        text-decoration: none !important;
+        border-radius: 25px;
+        font-size: 14px !important;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+    }
+    .fire-back-btn:hover {
+        background-color: #b71c1c !important;
+    }
+
+    /* RWD 手機版自適應 */
+    @media (max-width: 768px) {
+        .institute-page-container {
+            padding: 20px 15px;
+        }
+        .institute-page-container::before {
+            background-size: 600px auto;
+            background-position: center 80px;
+        }
+        .institute-header-wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+        .institute-top-back-btn {
+            position: static;
+            margin-bottom: 15px;
+        }
+        .institute-title {
+            font-size: 23px;
+        }
+        .institute-h4-title {
+            font-size: 18.5px;
+        }
+        .five-elements-flow-chart {
+            gap: 6px;
+            padding: 15px 8px;
+        }
+        .flow-node {
+            font-size: 12px;
+            padding: 6px 10px;
+        }
+        .flow-arrow {
+            font-size: 11px;
+        }
+        .manifesto-box {
+            padding: 22px 20px;
+        }
+    }
+</style>
+
+<!-- 滿版容器 -->
+<div class="institute-page-container">
+    <!-- 標題與右上角返回按鈕包裝區塊 -->
+    <div class="institute-header-wrapper">
+        <a href="https://www.hkwholeness.com/" class="institute-top-back-btn">🏠 返回首頁</a>
+        <h1 class="institute-title">善用五行破解人生逆境大論</h1>
+    </div>
+
+    <div class="institute-intro-text">
+        <p>
+            每個人來到這個世界上，都在面對屬於自己的風暴，這世上從來沒有密不透風的絕路，也沒有絕對無法逆轉的退化。人類的身體與這台世俗的社會引擎一樣，或許不懂得聆聽言語，但它們完全可以閱讀特定的能量波形。
+        </p>
+        <p>
+            當你將這套五行流體的生物波形與能量循環輸入進大腦與生活，世間所有人性博弈、事業起落、氣血流轉，在你眼裡都會退化成清晰可見、完全可預判的軌跡。看懂這五個底層代碼，我們就能在迷茫的紅塵與病痛中，一把奪回生命與健康的主權。
+        </p>
+    </div>
+
+    <h4 class="institute-h4-title">核心診斷：世間所有痛苦與病痛的兩大根源</h4>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">在看清規律之前，先看清痛苦與疾病為什麼會發生。人體與人生的困頓，剝離掉所有表面藉口，本質上只有兩個：</p>
+
+    <div class="root-cause-list">
+        <div class="root-cause-item">
+            <strong style="color: #c62828">1. 你的「火」太弱（核心失穩）</strong
+            >：在人生中，是自身核心不穩，被別人的情緒牽著走；在身體上，則是心火與元氣無法推動血液循環，導致機體失去了自發的自我修正動力，新症拖成舊疾。
+        </div>
+        <div class="root-cause-item">
+            <strong style="color: #1976d2">2. 你的「水」失控（邊界滲透）</strong
+            >：在世俗中，是任由隨之而來的嫉妒與是非反噬精神；在生理上，則是體內的體液與病理產物無法代謝，任由濕毒與堵塞滲透關節與內臟，引發慢性的退化性病變。
+        </div>
+    </div>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">要破這個局，我們必須學會調節自身的頻率，在內心與肉體中運轉這套完整的五行修復循環鏈。</p>
+
+    <h4 class="institute-h4-title">第一章：五個代碼，看穿世間所有人事物與肉身律動</h4>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">宇宙的流體力學與人體的生物波形，永遠遵循這五個步驟的循環推進：火 → 土 → 金 → 水 → 木 → 火。</p>
+
+    <!-- 五行流動視覺化圖表 -->
+    <div class="five-elements-flow-chart">
+        <div class="flow-node node-fire">【火】溫通循環</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node node-earth">【土】實體落地</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node node-metal">【金】結構防線</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node node-water">【水】潤澤清理</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node node-wood">【木】組織修復</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node node-fire">【火】本體進化</div>
+    </div>
+
+    <h5 class="institute-h5-title" style="color: #c62828">1. 【火】—— 一切能量的源頭（精神、主權、溫通循環）</h5>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">
+        火，是你的本我，是信念，也是不容置疑的核心主權。在萬事萬物中，它是定下戰略的發起者；在人體結構中，它代表著維持生命溫度的核心火種與血液循環。沒有火的推動，生命與氣血都會淪為一潭死水，退化便隨之而來。
+    </p>
+
+    <h5 class="institute-h5-title" style="color: #6d4c41">2. 【土】—— 價值的現實顯化（產品、服務、實體落地）</h5>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">
+        火生土。當內心與機體有了充足的能量（火），必然會向外輸出，在物理世界留下實體的痕跡。你的技術、產品是土；在身體上，肌肉、脾胃與實體的診所空間亦是土。土是承載一切的根基，但若缺乏背後「火」的頻率引導，屬土的肉身與產品再厚實，也只是缺乏生命力的工具。
+    </p>
+
+    <h5 class="institute-h5-title" style="color: #e65100">3. 【金】—— 利益與結構的規矩（財富、法律、骨骼關節）</h5>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">
+        土生金。當持續輸出極致的價值（土），必然會迎來回報。金，是財富與合約規矩；在身體幾何學中，金則死鎖著支撐我們肉身的骨骼與關節。金的天性是肅殺與規範。不論是治理公司還是調理關節，都必須將利益與結構「放對位置」，立下鐵一樣的邊界與對位。缺乏金的規矩，利益會流失；缺乏金的端正，關節就會錯位。
+    </p>
+
+    <h5 class="institute-h5-title" style="color: #1565c0">4. 【水】—— 資源派生的流動面（風險、是非、潤澤清理）</h5>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">
+        金生水。水是液態的，具備「滲透」與「清理」的特性。在世俗中，名利（金）越多，是非與風險（水）就越旺；在人體中，關節結構（金）周圍必然伴隨著體液與微循環（水）。水既能成為滋潤關節、清洗堵塞物物的甘露，也能在代謝失控時，演變成淹沒機體、引發炎症與內耗的洪水。智者與醫者從不恐懼水，而是建立好洩洪的管道。
+    </p>
+
+    <h5 class="institute-h5-title" style="color: #2e7d32">5. 【木】—— 危機與退化的終極變壓器（智慧、思考、組織修復）</h5>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">
+        水生木。這是逆天改命與對抗退化性病變的核心樞紐。當是非與病痛（水）砸向你時，庸者在委屈與發炎中自我燒毀，而智者與細胞則會動用大腦與自發律動，將危機轉化為滋養智慧與修復組織的頂級肥料。木代表著生長與修復。不怕水大，只怕木枯。身體的退化問題，本質上就是木氣乾枯、對外界刺激失去了反饋。唯有透過特定波形的共振，重新激活這股生長的元素（木），破壞的組織才能開始修復，並重新引燃機體的生命之火（木生火），完成生命與健康的躍遷。
+    </p>
+
+    <h4 class="institute-h4-title">第二章：萬事萬物的終極控局與健康調頻之道</h4>
+    <p style="font-size: 16.5px; position: relative; z-index: 2">如果你想在這個複雜的紅塵中活得通透、取得大勝，並讓肉身遠離退化，我們只需要死鎖住三件事：</p>
+
+    <div class="control-strategy-box">
+        <strong>一、 守火（調節生物頻率，保持核心穩定）</strong><br />
+        精神內核是帝國的中央指揮部，亦是人體輸出信號的源頭。當外界遇到攻擊，或者身體遇到退化瓶頸時，停止盲目的情緒反彈與藥物刺激。醫者與強者會靜下心來，調節自己的生物頻率與周圍共振。心火越冷靜、頻率越對齊，信號的輸出就越精準，身體與現實的修復韻律就必須按照你的意志強制坍塌。
+    </div>
+
+    <div class="control-strategy-box">
+        <strong>二、 厚土（狠狠編譯，在物理世界落針）</strong><br />
+        一切道理與理論，如果沒有經歷物質世界的物理煉獄，皆為虛妄。去踐行、去開創，正如醫師為每一個關節設計專屬的頻率手法一樣，需要實實在在地在肌肉、關節與現實項目上「精準落針」。你的肉身在物理世界裡承受了多少精準的磨練，你的現實結構就能承載多大的財富與健康帝國。
+    </div>
+
+    <div class="control-strategy-box">
+        <strong>三、 固金控水（用鐵幕與規矩劃清界限，滋潤清理）</strong><br />
+        容許利益與機體派生出水分，但絕不給貪婪與濕毒留出滲透的縫隙。用最清晰的合約鎖死資產，用正確的關節位置支撐肉身（固金）；同時，利用自發的波動頻率，引導體液去潤澤關節、清理體內的局部堵塞（控水）。將所有撲過來的是非與疾病，通過智慧與生物波形的研究，全部強制轉化為反哺自身格局與健康的核燃料。
+    </div>
+
+    <!-- 告世人書 -->
+    <div class="manifesto-box">
+        <h5 style="margin-top: 0; color: #ef5350; font-size: 19px; font-weight: bold; letter-spacing: 1px">告世人書</h5>
+
+        <p style="color: #fff !important; font-weight: bold; margin-top: 15px">
+            守住你的火，厚實你的土，藉由水木的共振修復組織。跨越這場物理的煉獄，拉高視角俯瞰紅塵，這台生命與宇宙引擎的控制權，就在你的股掌之中。
+        </p>
+    </div>
+
+    <!-- 原先底部的返回按鈕 -->
+    <a href="https://www.hkwholeness.com/" class="fire-back-btn">返回網站首頁</a>
+</div>

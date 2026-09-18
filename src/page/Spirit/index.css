@@ -1,0 +1,329 @@
+.spirit-page {
+    box-sizing: border-box;
+    flex: 1;
+    background-color: #faf6f0;
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    color: #2b2625;
+    line-height: 1.85;
+}
+
+.spirit-page__container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    overflow: hidden;
+}
+
+.spirit-page__container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--spirit-watermark);
+    background-repeat: no-repeat;
+    background-position: center 65%;
+    background-size: auto 95vh;
+
+    -webkit-mask-image: radial-gradient(ellipse at center 65%, black 40%, transparent 82%);
+    mask-image: radial-gradient(ellipse at center 65%, black 40%, transparent 82%);
+
+    filter: contrast(135%) brightness(102%) sepia(100%) hue-rotate(-45deg) saturate(220%);
+
+    opacity: 0.12;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.spirit-page__header {
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+.spirit-page__top-back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #c62828;
+    border: 1px solid rgba(198, 40, 40, 0.25);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: bold;
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.spirit-page__top-back:hover {
+    background-color: #c62828;
+    color: #ffffff;
+    border-color: #c62828;
+}
+
+.spirit-page__title {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: #c62828;
+    margin: 0 0 8px 0;
+    letter-spacing: 2px;
+}
+
+.spirit-page__intro {
+    font-size: 16.5px;
+    text-align: justify;
+    margin-bottom: 25px;
+    color: #332c2b;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__intro p {
+    text-indent: 2em;
+    margin-bottom: 16px;
+}
+
+.spirit-page__text {
+    font-size: 16.5px;
+    text-align: justify;
+    margin-bottom: 25px;
+    color: #2b2625;
+    text-indent: 2em;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__subtitle {
+    font-size: 21px;
+    color: #b71c1c;
+    border-left: 4px solid #d32f2f;
+    padding-left: 12px;
+    margin-top: 45px;
+    margin-bottom: 22px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__heading {
+    font-size: 18px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__root-list {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(3px);
+    border-radius: 8px;
+    padding: 22px 28px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(229, 115, 115, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__root-item {
+    margin-bottom: 15px;
+    font-size: 18.5px;
+    color: #2b2625;
+    line-height: 1.8;
+}
+
+.spirit-page__root-item:last-child {
+    margin-bottom: 0;
+}
+
+.spirit-page__root-strong-fire {
+    color: #c62828;
+}
+
+.spirit-page__root-strong-water {
+    color: #1976d2;
+}
+
+.spirit-page__flow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    padding: 22px;
+    border-radius: 12px;
+    margin: 35px 0;
+    border: 1px solid rgba(210, 195, 180, 0.5);
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__node {
+    padding: 9px 18px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14.5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+}
+
+.spirit-page__node--fire {
+    background-color: #d32f2f;
+}
+
+.spirit-page__node--earth {
+    background-color: #795548;
+}
+
+.spirit-page__node--metal {
+    background-color: #f57f17;
+}
+
+.spirit-page__node--water {
+    background-color: #1976d2;
+}
+
+.spirit-page__node--wood {
+    background-color: #388e3c;
+}
+
+.spirit-page__arrow {
+    color: #a08c7d;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.spirit-page__strategy {
+    margin-bottom: 22px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(3px);
+    border-left: 4px solid #c62828;
+    border-radius: 0 6px 6px 0;
+    font-size: 18.5px;
+    color: #2b2625;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__manifesto {
+    background: #231e1d;
+    color: #f5ebe6;
+    padding: 32px 35px;
+    border-radius: 8px;
+    margin-top: 40px;
+    border-top: 4px solid #d32f2f;
+    text-align: justify;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__manifesto-title {
+    margin-top: 0;
+    color: #ef5350;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.spirit-page__manifesto-text {
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 15.5px;
+    line-height: 1.85;
+}
+
+.spirit-page__back {
+    display: block;
+    width: 160px;
+    margin: 40px auto 10px auto;
+    padding: 10px 0;
+    background-color: #c62828;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.spirit-page__back:hover {
+    background-color: #b71c1c;
+}
+
+@media (max-width: 768px) {
+    .spirit-page__container {
+        padding: 20px 15px;
+    }
+
+    .spirit-page__container::before {
+        background-size: 600px auto;
+        background-position: center 80px;
+    }
+
+    .spirit-page__header {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+
+    .spirit-page__top-back {
+        position: static;
+        margin-bottom: 15px;
+    }
+
+    .spirit-page__title {
+        font-size: 23px;
+    }
+
+    .spirit-page__subtitle {
+        font-size: 18.5px;
+    }
+
+    .spirit-page__text,
+    .spirit-page__intro p {
+        font-size: 15.5px;
+        text-indent: 0;
+    }
+
+    .spirit-page__flow {
+        gap: 6px;
+        padding: 15px 8px;
+    }
+
+    .spirit-page__node {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .spirit-page__arrow {
+        font-size: 11px;
+    }
+
+    .spirit-page__manifesto {
+        padding: 22px 20px;
+    }
+}
