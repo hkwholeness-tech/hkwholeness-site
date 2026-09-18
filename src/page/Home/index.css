@@ -674,6 +674,22 @@
         width: 72px;
         height: 72px;
     }
+
+    .home-bottom {
+        bottom: max(44px, 9vh);
+    }
+}
+
+@media (min-height: 640px) {
+    .home-page__card {
+        --cyclone-offset: clamp(22px, calc((100vh - 720px) * 0.35 + 22px), 100px);
+    }
+}
+
+@media (min-width: 600px) and (max-width: 850px) {
+    .home-page__card {
+        --cyclone-offset: 0px;
+    }
 }
 
 @media (min-width: 851px) {
