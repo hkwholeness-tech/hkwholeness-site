@@ -1,0 +1,62 @@
+{
+    "site": {
+        "siteName": "全治護脊 WE Acupuncture",
+        "siteUrl": "https://www.hkwholeness.com",
+        "ogImage": "/og-cover.jpg",
+        "phone": "+852 6499 9199",
+        "email": "hkwholeness@gmail.com",
+        "addressStreet": "荔枝角長沙灣青山道 489-491 號 香港工業中心 A 座 904 室",
+        "addressLocality": "香港",
+        "addressCountry": "HK"
+    },
+    "routes": [
+        {
+            "path": "/",
+            "changefreq": "weekly",
+            "priority": 1.0,
+            "title": "全治護脊 WE Acupuncture ｜ 脊椎修正・氣針・自然療法",
+            "description": "全治護脊提供專業脊椎修正、氣針治療與自然療法，結合營養諮詢，一站式醫療復康保健中心，助你由根源改善痛症與退化問題。",
+            "keywords": "全治護脊,脊椎修正,氣針,自然療法,痛症治療,營養服務,香港脊醫"
+        },
+        {
+            "path": "/theory",
+            "changefreq": "monthly",
+            "priority": 0.8,
+            "title": "全治氣針治療理論 ｜ 全治護脊",
+            "description": "全治氣針治療理論源自劍峰醫師多年臨床實踐，從頻率治療手法到古典五行波形，逐步建立一套針對退化性病變的氣針治療體系。",
+            "keywords": "全治氣針,氣針治療,頻率治療手法,五行波形,退化性病變,劍峰醫師"
+        },
+        {
+            "path": "/spirit",
+            "changefreq": "monthly",
+            "priority": 0.7,
+            "title": "善用五行破解人生逆境大論 ｜ 全治護脊",
+            "description": "以五行流體力學解讀人生逆境與身體退化，從火土金水木五個底層代碼，看清痛苦與病痛的根源，奪回生命與健康的主權。",
+            "keywords": "五行,木火土金水,人生逆境,健康調頻,退化,全治護脊"
+        },
+        {
+            "path": "/contact",
+            "changefreq": "weekly",
+            "priority": 0.9,
+            "title": "聯絡我們與好轉見證 ｜ 全治護脊",
+            "description": "全治護脊診所位於荔枝角香港工業中心 A 座 904 室，提供預約諮詢、診所位置地圖、工作時間及遙距與脊椎矯正好轉個案分享。",
+            "keywords": "全治護脊地址,荔枝角診所,預約,WhatsApp,好轉個案,脊椎矯正見證"
+        },
+        {
+            "path": "/pricing",
+            "changefreq": "monthly",
+            "priority": 0.8,
+            "title": "診所服務價目表 ｜ 全治護脊",
+            "description": "全治護脊診所服務價目表：檢查費、X-Ray 照片及氣針療程收費透明公開，並列出醫師專業資歷與權威認證。",
+            "keywords": "全治護脊收費,氣針價錢,診所價目表,專業認證,英國營養學碩士"
+        },
+        {
+            "path": "/charity",
+            "changefreq": "weekly",
+            "priority": 0.7,
+            "title": "臨床教學與慈善施醫 ｜ 全治護脊",
+            "description": "全治護脊推行臨床技術教學、工聯會與明愛工作坊、街頭公開義診及天醫濟世計畫，以水之潤物精神回饋社會。",
+            "keywords": "氣針教學,義診,慈善施醫,天醫濟世,工聯會,明愛,全治護脊"
+        }
+    ]
+}
