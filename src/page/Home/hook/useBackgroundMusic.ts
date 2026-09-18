@@ -20,21 +20,19 @@ export function useBackgroundMusic() {
         });
     };
 
-    const play = () => {
+    const play = async () => {
         const audio = audioRef.current;
         if (!audio) {
             return;
         }
         audio.volume = 1;
-        audio
-            .play()
-            .then(() => {
-                setIsPlaying(true);
-                restartLyrics();
-            })
-            .catch(() => {
-                setIsPlaying(false);
-            });
+        try {
+            await audio.play();
+            setIsPlaying(true);
+            restartLyrics();
+        } catch {
+            setIsPlaying(false);
+        }
     };
 
     const pause = () => {
@@ -90,41 +88,30 @@ export function useBackgroundMusic() {
             return;
         }
 
-        const unlock = () => {
-            if (!audio) {
-                return;
-            }
+        const unlock = async () => {
             audio.volume = 1;
-            audio
-                .play()
-                .then(() => {
-                    setIsPlaying(true);
-                    setLyricsActive(false);
-                    window.requestAnimationFrame(() => {
-                        setLyricsActive(true);
-                    });
-                })
-                .catch(() => {
-                    setIsPlaying(false);
-                });
+            try {
+                await audio.play();
+                setIsPlaying(true);
+                restartLyrics();
+            } catch {
+                setIsPlaying(false);
+            }
             document.removeEventListener("click", unlock);
             document.removeEventListener("touchstart", unlock);
         };
 
-        audio
-            .play()
-            .then(() => {
+        (async () => {
+            try {
+                await audio.play();
                 setIsPlaying(true);
-                setLyricsActive(false);
-                window.requestAnimationFrame(() => {
-                    setLyricsActive(true);
-                });
-            })
-            .catch(() => {
+                restartLyrics();
+            } catch {
                 setIsPlaying(false);
                 document.addEventListener("click", unlock);
                 document.addEventListener("touchstart", unlock);
-            });
+            }
+        })();
 
         return () => {
             document.removeEventListener("click", unlock);

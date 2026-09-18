@@ -25,28 +25,19 @@ export function useFiveElementsWheel() {
             return;
         }
         const rotationNeeded = (360 - element.angle) % 360;
-        if (rotationNeeded === rotation) {
+        const delta = (rotationNeeded - (rotation % 360) + 360) % 360;
+        if (delta === 0) {
             window.location.href = element.href;
             return;
         }
         navigatingRef.current = true;
         targetRef.current = element;
-        setGlowingId(null);
-        setRotation(rotationNeeded);
+        setGlowingId(element.id);
+        setRotation(rotation + delta);
     };
 
     const handleSpinEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
         if (event.target !== event.currentTarget || event.propertyName !== "transform") {
-            return;
-        }
-        const element = targetRef.current;
-        if (element) {
-            setGlowingId(element.id);
-        }
-    };
-
-    const handleGlowEnd = (event: React.AnimationEvent<HTMLDivElement>) => {
-        if (event.target !== event.currentTarget) {
             return;
         }
         const element = targetRef.current;
@@ -58,5 +49,5 @@ export function useFiveElementsWheel() {
         window.location.href = element.href;
     };
 
-    return {rotation, glowingId, selectElement, handleSpinEnd, handleGlowEnd};
+    return {rotation, glowingId, selectElement, handleSpinEnd};
 }
