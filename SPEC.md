@@ -85,6 +85,7 @@
     | `water` | 水    | `/charity` |
 
 - 點擊元素：將被選元素轉至正上方，轉動結束（`transitionend`，且 `propertyName === "transform"`）後導航至對應路由；`pageshow` 時重置導航狀態。
+- 若被選元素已喺正上方（無需轉動），照樣轉足 360° 先導航，避免「零反應」。（例如初始狀態點擊木。）
 - 子元素以反向旋轉（`rotate(-rotation)`）保持文字／圖示正向。
 - 元素具 idle／active 兩張圖，選中時發光。
 - `:hover` 只喺桌面生效（包喺 `@media (hover: hover) and (pointer: fine)`）；觸控裝置第一下 tap 即觸發 `click`，唔會出現 iOS「先 tap 觸發 hover、再 tap 才 click」嘅兩下問題。音樂鍵、預約鍵同理。

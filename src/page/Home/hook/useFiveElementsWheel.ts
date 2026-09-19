@@ -27,11 +27,8 @@ export function useFiveElementsWheel() {
             return;
         }
         const rotationNeeded = (360 - element.angle) % 360;
-        const delta = (rotationNeeded - (rotation % 360) + 360) % 360;
-        if (delta === 0) {
-            navigate(element.href);
-            return;
-        }
+        const rawDelta = (rotationNeeded - (rotation % 360) + 360) % 360;
+        const delta = rawDelta === 0 ? 360 : rawDelta;
         navigatingRef.current = true;
         targetRef.current = element;
         setGlowingId(element.id);
