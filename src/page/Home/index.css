@@ -505,7 +505,7 @@
 .home-appointment {
     position: absolute;
     top: auto;
-    bottom: -60px;
+    bottom: 0px;
     left: 50%;
     z-index: 40;
     margin: 0;
