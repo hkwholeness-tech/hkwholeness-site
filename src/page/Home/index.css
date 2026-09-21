@@ -510,8 +510,8 @@
     z-index: 40;
     margin: 0;
     display: block;
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     transform: translateX(-50%);
     cursor: pointer;
     border: none;
