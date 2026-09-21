@@ -17,7 +17,7 @@ import type {FiveElement} from "./type";
 
 export const PAGE_HEADING = "善用五行，破解困局，重建健康";
 
-export const LYRICS_LINE_1 = "能量隨心發，破困解局人。";
+export const LYRICS_LINE_1 = "氣針隨心發，天醫救萬人。";
 export const LYRICS_LINE_2 = "我手即我心，我心可落針，";
 
 export const ADDRESS_LINE_1 = "地址：荔枝角長沙灣青山道 489-491 號";
