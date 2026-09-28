@@ -93,4 +93,4 @@ legacy/                    # 舊版靜態 HTML（遷移參考）
 
 ## 開發規範
 
-代碼慣例與 agent 規則見 [AGENTS.md](./AGENTS.md)。產品與技術規格見 [SPEC.md](./SPEC.md)。
+代碼慣例與 agent 規則見 [AGENTS.md](./AGENTS.md)。產品與技術規格見 [SPEC.md](./SPEC.md)。技術棧、安裝（含 Windows）與部署見 [SETUP.md](./SETUP.md)。
