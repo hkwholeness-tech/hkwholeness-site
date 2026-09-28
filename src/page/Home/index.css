@@ -49,7 +49,7 @@
     backdrop-filter: blur(12px);
     width: 120vw;
     max-width: 100vw;
-    min-height: max(55vh, calc(96vw + 300px));
+    min-height: calc(max(55vh, calc(96vw + 300px)) - 80px);
     flex: 1;
     justify-content: flex-start;
     border-radius: 0;

@@ -9,6 +9,7 @@ import {VerticalTitle} from "./component/VerticalTitle";
 import {useBackgroundMusic} from "./hook/useBackgroundMusic";
 import {useFiveElementsWheel} from "./hook/useFiveElementsWheel";
 import type {CycloneCssVars, FiveElement} from "./type";
+import {NavBar} from "../../component/SiteLayout/NavBar";
 import "./index.css";
 
 export const HomePage = () => {
@@ -26,6 +27,7 @@ export const HomePage = () => {
 
     return (
         <div className="home-page">
+            <NavBar />
             <div className="home-page__shell">
                 <main className="home-page__main">
                     <div className="home-page__card" style={cycloneStyle}>
