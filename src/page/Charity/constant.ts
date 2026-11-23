@@ -1,10 +1,10 @@
 import Clinic0531Image from "./asset/clinic-2025-05-31.webp";
 import Clinic0809Image from "./asset/clinic-2026-08-09.webp";
 import Clinic0823Image from "./asset/clinic-2026-08-23.webp";
-import Clinic1122_1Image from "./asset/clinic-2026-11-22-1.webp";
-import Clinic1122_2Image from "./asset/clinic-2026-11-22-2.webp";
-import Clinic1122_3Image from "./asset/clinic-2026-11-22-3.webp";
-import Clinic1122_4Image from "./asset/clinic-2026-11-22-4.webp";
+import Clinic1122Image from "./asset/clinic-2026-11-22-1.jpg";
+import Clinic1122_2Image from "./asset/clinic-2026-11-22-2.jpg";
+import Clinic1122_3Image from "./asset/clinic-2026-11-22-3.jpg";
+import Clinic1122_4Image from "./asset/clinic-2026-11-22-4.jpg";
 import ClinicMapImage from "./asset/clinic-map.webp";
 import ClinicVideo1 from "./asset/clinic-video-1.mp4";
 import ClinicVideo2 from "./asset/clinic-video-2.mp4";
@@ -50,7 +50,7 @@ export const CLINIC_SESSIONS: ClinicSession[] = [
         location: "荔枝角長沙灣道匯豐銀行外",
     },
     {   
-        image: Clinic1122_1Image, 
+        image: Clinic1122_2Image, 
         alt: "11月22日義診",
         date: "11月22日 (日)",
         location: "荔枝角長沙灣道匯豐銀行外",
