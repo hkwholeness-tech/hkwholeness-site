@@ -1,10 +1,10 @@
 import Clinic0531Image from "./asset/clinic-2025-05-31.webp";
 import Clinic0809Image from "./asset/clinic-2026-08-09.webp";
 import Clinic0823Image from "./asset/clinic-2026-08-23.webp";
-import Clinic1122Image from "./asset/clinic-2026-11-22-1.webp";
-import Clinic1122Image from "./asset/clinic-2026-11-22-2.webp";
-import Clinic1122Image from "./asset/clinic-2026-11-22-3.webp";
-import Clinic1122Image from "./asset/clinic-2026-11-22-4.webp";
+import Clinic1122_1Image from "./asset/clinic-2026-11-22-1.webp";
+import Clinic1122_2Image from "./asset/clinic-2026-11-22-2.webp";
+import Clinic1122_3Image from "./asset/clinic-2026-11-22-3.webp";
+import Clinic1122_4Image from "./asset/clinic-2026-11-22-4.webp";
 import ClinicMapImage from "./asset/clinic-map.webp";
 import ClinicVideo1 from "./asset/clinic-video-1.mp4";
 import ClinicVideo2 from "./asset/clinic-video-2.mp4";
@@ -44,7 +44,25 @@ export const TEACHING_CARDS: TeachingCard[] = [
 
 export const CLINIC_SESSIONS: ClinicSession[] = [
     {
-        image: Clinic1122Image,
+        image: Clinic1122Image, 
+        alt: "11月22日義診",
+        date: "11月22日 (日)",
+        location: "荔枝角長沙灣道匯豐銀行外",
+    },
+    {   
+        image: Clinic1122_1Image, 
+        alt: "11月22日義診",
+        date: "11月22日 (日)",
+        location: "荔枝角長沙灣道匯豐銀行外",
+    },
+    {   
+        image: Clinic1122_3Image, 
+        alt: "11月22日義診",
+        date: "11月22日 (日)",
+        location: "荔枝角長沙灣道匯豐銀行外",
+    },
+    {   
+        image: Clinic1122_4Image, 
         alt: "11月22日義診",
         date: "11月22日 (日)",
         location: "荔枝角長沙灣道匯豐銀行外",
@@ -71,7 +89,7 @@ export const CLINIC_SESSIONS: ClinicSession[] = [
 
 export const CLINIC_MAP_SRC = ClinicMapImage;
 
-export const CLINIC_VIDEOS = [ClinicVideo1, ClinicVideo2];
+export const CLINIC_VIDEOS = [ClinicVideo3, ClinicVideo2, ClinicVideo1];
 
 export const TIANYI_IMAGE_SRC = TianyiImage;
 
