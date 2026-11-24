@@ -8,7 +8,7 @@ import Clinic1122_4Image from "./asset/clinic-2026-11-22-4.jpg";
 import ClinicMapImage from "./asset/clinic-map.webp";
 import ClinicVideo1 from "./asset/clinic-video-1.mp4";
 import ClinicVideo2 from "./asset/clinic-video-2.mp4";
-import ClinicVideo3 from "./asset.clinic-2026-11-22-1.mp4";
+import ClinicVideo3 from "./asset/clinic-2026-11-22-1.mp4";
 import TeachingCaritasImage from "./asset/teaching-caritas.webp";
 import TeachingUnionImage from "./asset/teaching-union.webp";
 import TianyiImage from "./asset/tianyi-illustration.webp";
